@@ -2,9 +2,35 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/*.App-logo {
+  height: 20px;
+  float: left;
+}*/
+
+/*STYLES FOR HEADER*/
+.custom-progress-wrapper {
+  width: 42%;
+  margin: 15px auto;
+}
+.progress {
+  height: 10px !important;
+}
+.custom-header {
+  background: url('/static/media/logo.1b409612.svg') 10px center no-repeat rgb(239, 251, 255);
+  background-size: 86px;
+}
+
+/*STYLES FOR QUESTION CONTAINER*/
+.custom-question-centered {
+  width: 50%;
+  margin: 30vh auto;
+}
+
+.custom-question-centered .btn-primary {
+  background-color: rgb(0, 92, 232) !important;
+  background-image: none !important;
+  border-radius: 16px !important;
+  padding: 6px 35px !important;
 }
 
 .App-header {
