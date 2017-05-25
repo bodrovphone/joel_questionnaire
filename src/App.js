@@ -15,6 +15,9 @@ class App extends Component {
         responses: []
       };
     }
+  nextQuestion() {
+    console.log('aloha')
+  }
   render() {
     return (
       <Router>
@@ -27,7 +30,7 @@ class App extends Component {
           <div className="block-fill-height">
             <div className="block block-all block-xs-middle">
               <div className="container">
-                <Question />
+                <Question currentQuestion={this.state.questionNumber}/>
               </div>
             </div>
           </div>
