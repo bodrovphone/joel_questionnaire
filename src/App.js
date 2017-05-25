@@ -14,11 +14,15 @@ class App extends Component {
         questionNumber: 0,
         responses: []
       };
+      this.nextQuestion = this.nextQuestion.bind(this);
     }
   nextQuestion() {
-    console.log('aloha')
+    this.setState({
+      ...this.state, questionNumber: this.state.questionNumber + 1
+    });
   }
   render() {
+    console.log("from App:", this.state);
     return (
       <Router>
         <section id="questions" className="question-box">
@@ -30,7 +34,7 @@ class App extends Component {
           <div className="block-fill-height">
             <div className="block block-all block-xs-middle">
               <div className="container">
-                <Question currentQuestion={this.state.questionNumber}/>
+                <Question nextQuestion={this.nextQuestion} currentQuestion={this.state.questionNumber}/>
               </div>
             </div>
           </div>
