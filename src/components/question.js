@@ -9,10 +9,10 @@ export default class Question extends Component {
         <div className="custom-question-centered">
           <h1>Let's get started</h1>
           <Route 
-                path={questions_data[0].path} 
+                path={`/joel_questionnaire${questions_data[0].path}`} 
                 component={Content} />
             <Link 
-                to={questions_data[this.props.currentQuestion+1].path}>
+                to={`/joel_questionnaire${questions_data[0].path}`}>
                 <Button bsStyle="primary" 
                         onClick={this.props.next} >NEXT
                 </Button>
