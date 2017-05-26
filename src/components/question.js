@@ -11,13 +11,15 @@ export default class Question extends Component {
 // path={`/joel_questionnaire${questions_data[this.props.currentQuestion].path}`} 
 console.log(questions_data[this.props.currentQuestion].path);
     return (
-        <div className="custom-question-centered">
+        <div>
           <Route path={`${questions_data[this.props.currentQuestion].path}`} component={Content(this.props)}/>
           <Link 
               to={questions_data[this.props.currentQuestion+1].path}>
-              <Button bsStyle="primary" 
-                      onClick={this.props.nextQuestion} >NEXT
-              </Button>
+              <div className="custom-question-centered">
+                <Button bsStyle="primary" 
+                        onClick={this.props.nextQuestion} >NEXT
+                </Button>
+              </div>
           </Link>
         </div>
     );

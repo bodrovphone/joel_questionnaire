@@ -22,8 +22,11 @@
 
 /*STYLES FOR QUESTION CONTAINER*/
 .custom-question-centered {
-  width: 50%;
-  margin: 30vh auto;
+  margin: 20vh auto 20px auto;
+  width: 30%;
+}
+a .custom-question-centered {
+  margin: 30px auto;
 }
 
 .custom-question-centered .btn-primary {
@@ -33,11 +36,30 @@
   padding: 6px 35px !important;
 }
 
-.custom-question-centered .btn-toolbar .btn-primary {
+.custom-buttons-centered .btn-toolbar .btn-primary {
   background-color: rgb(255, 255, 255) !important;
   background-image: none !important;
   color: rgb(0, 92, 232) !important;
   border-color: rgb(0, 92, 232) !important;
+  margin: 8px !important;
+  padding: 6px 16px !important;
+  border-radius: 16px !important;
+  border-width: 1.5px !important;
+  font-size: 12px !important;
+}
+
+.custom-buttons-centered {
+  width: 77%;
+  margin: 0 auto;
+}
+
+.custom-buttons-centered .btn-toolbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.custom-buttons-centered .btn-toolbar .btn-primary {
+  
 }
 
 .App-header {
