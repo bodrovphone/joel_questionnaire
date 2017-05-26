@@ -28,7 +28,7 @@ class App extends Component {
         <section id="questions" className="question-box">
           <div className="container-fluid custom-header">
             <div className="custom-progress-wrapper">
-              <ProgressBar now={1} />
+              <ProgressBar now={(this.state.questionNumber) * 5} />
             </div>  
           </div>
           <div className="block-fill-height">
