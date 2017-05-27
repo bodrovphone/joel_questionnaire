@@ -1,5 +1,5 @@
 import { FormGroup, FormControl, Radio, ButtonToolbar, Button } from 'react-bootstrap';
-import React, { Component } from 'react';
+import React from 'react';
 
 const q1 = () => {
       return (
@@ -16,7 +16,7 @@ const q2 = () => {
             <div className="custom-question-centered">
                 <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Tell us about your business</h3> 
                   <FormGroup bsSize="small">
-                    <FormControl type="text" placeholder='Company Name' />
+                    <FormControl type="text" placeholder='Company Name'/>
                 </FormGroup>
                 <h6>Number of emloyes including you.</h6>
                <FormGroup>
