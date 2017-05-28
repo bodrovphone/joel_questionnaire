@@ -1,11 +1,11 @@
 import { FormGroup, FormControl, Radio, ButtonToolbar, Button } from 'react-bootstrap';
 import React from 'react';
 
-const q1 = () => {
+const q1 = (props) => {
       return (
       <div className="custom-question-centered">
             <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Let's get started</h3> 
-            <p>We just to grab some information of your company in order to understand your needs well, and provide you with the best solutions for you.</p>
+            <p onClick={() => console.log(props.item)}>We just to grab some information of your company in order to understand your needs well, and provide you with the best solutions for you.</p>
       </div>
       );
 };
@@ -453,4 +453,4 @@ const q20 = () => {
 q20.path = "/thanks";
 
 
-export default [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, q17, q16];
+export default [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20 ];

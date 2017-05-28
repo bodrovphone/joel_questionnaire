@@ -25,6 +25,9 @@
   margin: 20vh auto 20px auto;
   width: 30%;
 }
+.custom-buttom-centered {
+  margin: 30px auto 0 auto;
+}
 a .custom-question-centered {
   margin: 30px auto;
 }
