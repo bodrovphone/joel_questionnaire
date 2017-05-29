@@ -1,18 +1,86 @@
-import { FormGroup, FormControl, Radio, ButtonToolbar, Button } from 'react-bootstrap';
-import React from 'react';
+import { FormGroup, FormControl, ButtonToolbar, Button, ButtonInput } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Form, ValidatedInput, Radio, RadioGroup } from 'react-bootstrap-validation';
 
-const q1 = (props) => {
+class Q1 extends Component {
+    render() {
       return (
-      <div className="custom-question-centered">
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Let's get started</h3> 
-            <p onClick={() => console.log(props.item)}>We just to grab some information of your company in order to understand your needs well, and provide you with the best solutions for you.</p>
+        <div className="custom-question-centered">
+              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Let's get started</h3> 
+              <p>We just to grab some information of your company in order to understand your needs well, and provide you with the best solutions for you.</p>
+              <Button bsStyle="primary"
+                      onClick={this.props.nextQuestion}
+                      >
+                NEXT
+              </Button>
+        </div>
+      );
+    }
+};
+
+
+class Q2 extends Component {
+    constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+    }
+    _handleValidSubmit(value) {
+        this.props.nextQuestion(value);
+    }
+ 
+    _handleInvalidSubmit(errors, values) {
+        // Errors is an array containing input names 
+        // that failed to validate 
+    }
+    
+    render() {
+      return (
+        <div className="custom-question-centered">
+            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Tell us about your business</h3> 
+            <Form
+                onValidSubmit={this._handleValidSubmit.bind(this)}
+                onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+            >
+                <ValidatedInput
+                        type='text'
+                        label=''
+                        // Each input that you need validated should have 
+                        // the "name" prop 
+                        name='company_name'
+                        // Validation rules separated with comma 
+                        validate='required'
+                        // Error messages for each error type 
+                        placeholder='Company Name'
+                        errorHelp={{
+                            required: 'Please enter your company name',
+                        }}
+                        />
+                <RadioGroup 
+                        name='number_of_employes'
+                        label='Number of emloyes including you.'
+                        // Supports validation as well 
+                        validate='required'
+                        errorHelp='Please choose option.'>
+                    <Radio value='Just you' label='Just you' />
+                    <Radio value='2-9' label='2-9' />
+                    <Radio value='9-30' label='9-30' />
+                    <Radio value='3-100' label='3-100' />
+                    <Radio value='100+' label='100+' />
+                </RadioGroup>
+                <Button 
+                    type="submit"
+                    bsStyle="primary">
+                    NEXT
+                </Button>
+            </Form>
       </div>
       );
+      }
 };
-q1.path = "/";
 
-const q2 = () => {
-      return (
+class Q3 extends Component {
+      render() {
+        return (
             <div className="custom-question-centered">
                 <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Tell us about your business</h3> 
                   <FormGroup bsSize="small">
@@ -41,21 +109,20 @@ const q2 = () => {
                   </Radio>
                 </FormGroup>
          </div>
-         );
+         );}
 };
-q2.path = "/business";
 
-const q3 = () => {
-      return (
-      <div className="custom-question-centered">
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Can you tell us breefly what does your business actually do?</h3> 
-        <FormGroup bsSize="small">
-            <FormControl type="text" placeholder='Type your answer' />
-        </FormGroup>
-      </div>
-      );
-};
-q3.path = "/subject";
+// const q3 = () => {
+//       return (
+//       <div className="custom-question-centered">
+//             <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Can you tell us breefly what does your business actually do?</h3> 
+//         <FormGroup bsSize="small">
+//             <FormControl type="text" placeholder='Type your answer' />
+//         </FormGroup>
+//       </div>
+//       );
+// };
+// q3.path = "/subject";
 
 const q4 = () => {
       return (
@@ -453,4 +520,4 @@ const q20 = () => {
 q20.path = "/thanks";
 
 
-export default [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20 ];
+export default [Q1, Q2 ];
