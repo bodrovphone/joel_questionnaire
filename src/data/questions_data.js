@@ -1,4 +1,4 @@
-import { FormGroup, FormControl, ButtonToolbar, Button, ButtonInput } from 'react-bootstrap';
+import { FormGroup, FormControl, ButtonToolbar, Button, ButtonInput, Checkbox } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { Form, ValidatedInput, Radio, RadioGroup } from 'react-bootstrap-validation';
 
@@ -43,22 +43,14 @@ class Q2 extends Component {
             >
                 <ValidatedInput
                         type='text'
-                        label=''
-                        // Each input that you need validated should have 
-                        // the "name" prop 
                         name='company_name'
-                        // Validation rules separated with comma 
                         validate='required'
-                        // Error messages for each error type 
                         placeholder='Company Name'
-                        errorHelp={{
-                            required: 'Please enter your company name',
-                        }}
+                        errorHelp={'Please enter your company name'}
                         />
                 <RadioGroup 
                         name='number_of_employes'
                         label='Number of emloyes including you.'
-                        // Supports validation as well 
                         validate='required'
                         errorHelp='Please choose option.'>
                     <Radio value='Just you' label='Just you' />
@@ -79,81 +71,167 @@ class Q2 extends Component {
 };
 
 class Q3 extends Component {
-      render() {
-        return (
-            <div className="custom-question-centered">
-                <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Tell us about your business</h3> 
-                  <FormGroup bsSize="small">
-                    <FormControl type="text" placeholder='Company Name'/>
-                </FormGroup>
-                <h6>Number of emloyes including you.</h6>
-               <FormGroup>
-                  <Radio name="radioGroup">
-                    Just you
-                  </Radio>
-                  {' '}
-                  <Radio name="radioGroup">
-                    2-9
-                  </Radio>
-                    {' '}
-                  <Radio name="radioGroup">
-                    9-30
-                  </Radio>
-                    {' '}
-                  <Radio name="radioGroup">
-                    3-100
-                  </Radio>
-                    {' '}
-                  <Radio name="radioGroup">
-                    100+
-                  </Radio>
-                </FormGroup>
-         </div>
-         );}
+    constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+    }
+    _handleValidSubmit(value) {
+        this.props.nextQuestion(value);
+    }
+ 
+    _handleInvalidSubmit(errors, values) {
+        // Errors is an array containing input names 
+        // that failed to validate 
+    }
+    render() {
+      return (
+        <div className="custom-question-centered">
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Can you tell us breefly what does your business actually do?</h3> 
+          <Form
+                onValidSubmit={this._handleValidSubmit.bind(this)}
+                onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+            >
+              <ValidatedInput
+                      type='text'
+                      name='about_business'
+                      validate='required'
+                      placeholder='Type your answer'
+                      errorHelp={'Please enter your answer'}
+                      />
+              <Button 
+                  type="submit"
+                  bsStyle="primary">
+                  NEXT
+              </Button>
+          </Form>
+        </div>
+       );
+    }
 };
 
-// const q3 = () => {
-//       return (
-//       <div className="custom-question-centered">
-//             <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Can you tell us breefly what does your business actually do?</h3> 
-//         <FormGroup bsSize="small">
-//             <FormControl type="text" placeholder='Type your answer' />
-//         </FormGroup>
-//       </div>
-//       );
-// };
-// q3.path = "/subject";
-
-const q4 = () => {
+class Q4 extends Component {
+      constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+      this.ToggleClass = this.ToggleClass.bind(this);
+      }
+      _handleValidSubmit(value) {
+          this.props.nextQuestion(value);
+      }
+   
+      _handleInvalidSubmit(errors, values) {
+          // Errors is an array containing input names 
+          // that failed to validate 
+      }
+      ToggleClass(e) {
+        e.target.classList.toggle('selected')
+      }
+      render() {
       return (
             <div>
-                  <div className="custom-question-centered">
-                        <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What makes your company remarkable? unique to everone else</h3> 
-                        <FormGroup bsSize="small">
-                            <FormControl type="text" placeholder='type your answer or select 1 or mulitple points' />
-                        </FormGroup>
-                  </div>
-                  <div className="custom-buttons-centered">
-                        <ButtonToolbar bsSize="small">
-                            <Button bsStyle="primary">Quality</Button>
-                            <Button bsStyle="primary">Low Pricing</Button>
-                            <Button bsStyle="primary">Quick</Button>
-                            <Button bsStyle="primary">Customer service</Button>
-                            <Button bsStyle="primary">Experianced</Button>
-                            <Button bsStyle="primary">Stylish</Button>
-                            <Button bsStyle="primary">Luary</Button>
-                            <Button bsStyle="primary">High-End</Button>
-                            <Button bsStyle="primary">Affordable</Button>
-                            <Button bsStyle="primary">Hassel Free</Button>
-                            <Button bsStyle="primary">All in one</Button>
-                        </ButtonToolbar>
-                  </div>
+                <div className="custom-question-centered">
+                      <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What makes your company remarkable? unique to everone else</h3> 
+                </div>
+                <Form
+                    onValidSubmit={this._handleValidSubmit.bind(this)}
+                    onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+                >
+                <div className="custom-input-centered">
+                      <ValidatedInput
+                      type='text'
+                      name='about_business'
+                      bsSize='small'
+                      placeholder='type your answer or select 1 or mulitple points'
+                      />
+                </div>
+                <div className="custom-buttons-centered">
+                <FormGroup>
+                <ValidatedInput
+                    type='checkbox'
+                    name='Quality'
+                    label='Quality'
+                    onClick={this.ToggleClass}
+                />
+                  <ValidatedInput
+                    type='checkbox'
+                    name='Low_Pricing'
+                    label='Low Pricing'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='Quick'
+                    label='Quick'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='Customer_service'
+                    label='Customer service'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='Experianced'
+                    label='Experianced'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='Stylish'
+                    label='Stylish'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='Luxary'
+                    label='Luxary'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='High-End'
+                    label='High-End'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='Affordable'
+                    label='Affordable'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='Hassel_Free'
+                    label='Hassel Free'
+                    onClick={this.ToggleClass}
+                />
+                <ValidatedInput
+                    type='checkbox'
+                    name='All_in_one'
+                    label='All in one'
+                    onClick={this.ToggleClass}
+                />
+                </FormGroup>
+                </div>
+                <div className="custom-next-centered">
+                  <Button 
+                    type="submit"
+                    bsStyle="primary">
+                    NEXT
+                  </Button>
+                </div>
+                </Form>
             </div>
       );
+    }
 };
-q4.path = "/remarkable";
 
-const q5 = () => {
+class Q5 extends Component {
+  constructor(props) {
+    super(props);
+  }
+      render() {
       return (
       <div className="custom-question-centered">
             <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What are your main competitors?</h3> 
@@ -162,8 +240,8 @@ const q5 = () => {
               </FormGroup>
       </div>
       );
+    }
 };
-q5.path = "/competitors";
 
 const q6 = () => {
       return (
@@ -520,4 +598,4 @@ const q20 = () => {
 q20.path = "/thanks";
 
 
-export default [Q1, Q2 ];
+export default [Q4, Q2, Q3, Q4, Q5 ];

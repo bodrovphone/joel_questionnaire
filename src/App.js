@@ -17,6 +17,7 @@ class App extends Component {
     }
   
   nextQuestion(value) {
+    console.log(value)
     this.setState({
       questionNumber: this.state.questionNumber + 1,
       responses: [...this.state.responses, value]
