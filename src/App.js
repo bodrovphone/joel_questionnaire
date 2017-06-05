@@ -14,10 +14,10 @@ class App extends Component {
 
       this.nextQuestion = this.nextQuestion.bind(this);
       this.saveResponse = this.saveResponse.bind(this);
+      this.skipQuestions = this.skipQuestions.bind(this);
     }
   
   nextQuestion(value) {
-    console.log(value)
     this.setState({
       questionNumber: this.state.questionNumber + 1,
       responses: [...this.state.responses, value]
@@ -27,7 +27,12 @@ class App extends Component {
   saveResponse(value) {
     
   }
-
+  skipQuestions(value, num) {
+    this.setState({
+      questionNumber: this.state.questionNumber + num,
+      responses: [...this.state.responses, value]
+    });
+  }
   render() {
 
     console.log('responses', this.state.responses);
@@ -37,6 +42,7 @@ class App extends Component {
           <Question questionNumber={this.state.questionNumber}
                     nextQuestion={this.nextQuestion}
                     saveResponse={this.saveResponse}
+                    skipQuestions={this.skipQuestions}
            />
         </section>
     );
