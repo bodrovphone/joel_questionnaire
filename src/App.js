@@ -24,9 +24,20 @@ class App extends Component {
     });
   }
 
-  saveResponse(value) {
-    
+  saveResponse() {
+    //   axios.post('/user', {
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstone'
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+    console.log('Yami!');
   }
+
   skipQuestions(value, num) {
     this.setState({
       questionNumber: this.state.questionNumber + num,

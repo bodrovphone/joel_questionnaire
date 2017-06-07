@@ -1,5 +1,4 @@
-import { FormGroup, Radio as Radiolo, FormControl, ButtonToolbar, Button, ButtonInput, Checkbox } from 'react-bootstrap';
-import ReactDOM from 'react-dom';
+import { FormGroup, Radio as Radiolo, Button } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { Form, ValidatedInput, Radio, RadioGroup } from 'react-bootstrap-validation';
 
@@ -57,7 +56,7 @@ class Q2 extends Component {
                     <Radio value='Just you' label='Just you' />
                     <Radio value='2-9' label='2-9' />
                     <Radio value='9-30' label='9-30' />
-                    <Radio value='3-100' label='3-100' />
+                    <Radio value='30-100' label='30-100' />
                     <Radio value='100+' label='100+' />
                 </RadioGroup>
                 <Button 
@@ -131,7 +130,7 @@ class Q4 extends Component {
       return (
             <div>
                 <div className="custom-question-centered">
-                      <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What makes your company remarkable? unique to everone else</h3> 
+                      <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What makes your company remarkable? unique to everyone else</h3> 
                 </div>
                 <Form
                     onValidSubmit={this._handleValidSubmit.bind(this)}
@@ -1476,6 +1475,9 @@ class Q20 extends Component {
 };
 
 class Q21 extends Component {
+    componentDidMount() {
+      this.props.saveResponse();
+    }
     render() {
       return (
         <div className="custom-question-centered custom-9 custom-13">
