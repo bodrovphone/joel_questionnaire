@@ -139,7 +139,7 @@ class Q4 extends Component {
                 <div className="custom-input-centered">
                       <ValidatedInput
                       type='text'
-                      name='about_business'
+                      name='unique'
                       bsSize='small'
                       placeholder='type your answer or select 1 or mulitple points'
                       />
@@ -290,7 +290,7 @@ class Q6 extends Component {
               onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
           >
             <RadioGroup 
-                      name='website_goals'
+                      name='website_type'
                       label='Select 1 of the options.'
                       validate='required'
                       errorHelp='Please choose option.'>
@@ -383,7 +383,7 @@ class Q8 extends Component {
                   <div className="custom-input-centered">
                         <ValidatedInput
                         type='text'
-                        name='about_business'
+                        name='target_audience'
                         bsSize='small'
                         placeholder='type your answer or select 1 or mulitple points'
                         />
@@ -482,7 +482,7 @@ class Q9 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_website: 'no'}, 1);
+        this.props.skipQuestions({has_website: 'no', website_address: '',what_you_like: '', what_you_dislike: '' }, 1);
       }
       renderForm(has) {
         return has ? <SiteForm {...this.props} /> : '' ;
@@ -787,7 +787,7 @@ class Q13 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_domain: 'no'}, 1);
+        this.props.skipQuestions({has_domain: 'no', domain_name: '', domain_pass: '', domain_user_name: '', go_daddy: false, other_domain: false, 'register.com' : false}, 1);
       }
       renderForm(has) {
         return has ? <DomainForm {...this.props} /> : '' ;
@@ -826,7 +826,7 @@ class DomainForm extends Component {
     this.ToggleClass = this.ToggleClass.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion(value);
+    this.props.nextQuestion({...value, has_domain: 'yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
@@ -923,7 +923,7 @@ class Q14 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_email_as_domain: 'no'}, 1);
+        this.props.skipQuestions({has_email_as_domain: 'no', gmail: false, outlook: false, other_email: false, domain_email_other: ''}, 1);
       }
       renderForm(has) {
         return has ? <DomainEmail {...this.props} /> : '' ;
@@ -962,7 +962,7 @@ class DomainEmail extends Component {
     this.ToggleClass = this.ToggleClass.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion(value);
+    this.props.nextQuestion({...value, has_email_as_domain: 'yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
@@ -1040,7 +1040,7 @@ class Q15 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_hosting: 'no'}, 1);
+        this.props.skipQuestions({has_hosting: 'no', go_daddy_hosting: false, blue_host: false, host_gator: false, ix_hosting: false, '1&1': false, Other: false, hosting_other: '', ftp_user_name: '', ftp_pass: ''}, 1);
       }
       renderForm(has) {
         return has ? <HostingForm {...this.props} /> : '' ;
@@ -1079,7 +1079,7 @@ class HostingForm extends Component {
     this.ToggleClass = this.ToggleClass.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion(value);
+    this.props.nextQuestion({...value, has_hosting: 'true'});
   }
   _handleInvalidSubmit(errors, values) {
   }
@@ -1264,7 +1264,7 @@ class Q17 extends Component {
             <div className="custom-next-centered">
                 <ValidatedInput
                       type='text'
-                      name='domain_email_other'
+                      name='company_location'
                       bsSize='small'
                       placeholder='addres'
                       label='Optional if you want to show'
@@ -1302,7 +1302,7 @@ class Q18 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_hosting: 'no'}, 1);
+        this.props.skipQuestions({has_social: 'no', twitter: '', facebook: '', instegram: '', other_social: ''}, 1);
       }
       renderForm(has) {
         return has ? <SocialForm {...this.props} /> : '' ;
@@ -1340,7 +1340,7 @@ class SocialForm extends Component {
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion(value);
+    this.props.nextQuestion({...value,has_social: 'yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
