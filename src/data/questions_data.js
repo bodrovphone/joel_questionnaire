@@ -787,7 +787,7 @@ class Q13 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_domain: 'no', domain_name: '', domain_pass: '', domain_user_name: ''}, 1);
+        this.props.skipQuestions({has_domain: 'No', domain_name: '', domain_pass: '', domain_user_name: ''}, 1);
       }
       renderForm(has) {
         return has ? <DomainForm {...this.props} /> : '' ;
@@ -826,7 +826,7 @@ class DomainForm extends Component {
     this.ToggleClass = this.ToggleClass.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion({...value, has_domain: 'yes'});
+    this.props.nextQuestion({...value, has_domain: 'Yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
@@ -923,7 +923,7 @@ class Q14 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_email_as_domain: 'no', domain_email_other: ''}, 1);
+        this.props.skipQuestions({has_email_as_domain: 'No', domain_email_other: ''}, 1);
       }
       renderForm(has) {
         return has ? <DomainEmail {...this.props} /> : '' ;
@@ -962,7 +962,7 @@ class DomainEmail extends Component {
     this.ToggleClass = this.ToggleClass.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion({...value, has_email_as_domain: 'yes'});
+    this.props.nextQuestion({...value, has_email_as_domain: 'Yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
