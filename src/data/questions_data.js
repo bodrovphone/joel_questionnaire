@@ -154,7 +154,7 @@ class Q4 extends Component {
                 />
                   <ValidatedInput
                     type='checkbox'
-                    name='Low_Pricing'
+                    name='Low Pricing'
                     label='Low Pricing'
                     onClick={this.ToggleClass}
                 />
@@ -166,7 +166,7 @@ class Q4 extends Component {
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='Customer_service'
+                    name='Customer service'
                     label='Customer service'
                     onClick={this.ToggleClass}
                 />
@@ -202,13 +202,13 @@ class Q4 extends Component {
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='Hassel_Free'
+                    name='Hassel Free'
                     label='Hassel Free'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='All_in_one'
+                    name='All in one'
                     label='All in one'
                     onClick={this.ToggleClass}
                 />
@@ -337,10 +337,10 @@ class Q7 extends Component {
                         label='Select 1 of the options.'
                         validate='required'
                         errorHelp='Please choose option.'>
-                    <Radio value='online_presence' label='Simply Online Presence' />
-                    <Radio value='show_off' label='Show Off' />
-                    <Radio value='branding' label='Inspire/Branding' />
-                    <Radio value='drive_sales' label='Drive sales' />
+                    <Radio value='Simply Online Presence' label='Simply Online Presence' />
+                    <Radio value='Show Off' label='Show Off' />
+                    <Radio value='Inspire/Branding' label='Inspire/Branding' />
+                    <Radio value='Drive sales' label='Drive sales' />
                 </RadioGroup>
               <Button 
                   type="submit"
@@ -392,25 +392,25 @@ class Q8 extends Component {
                     <FormGroup>
                     <ValidatedInput
                         type='checkbox'
-                        name='upper_class'
+                        name='Upper Class'
                         label='Upper Class'
                         onClick={this.ToggleClass}
                     />
                       <ValidatedInput
                         type='checkbox'
-                        name='middle_class'
+                        name='Middle Class'
                         label='Middle Class'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
-                        name='low_class'
+                        name='Low Class'
                         label='Low Class'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
-                        name='enterpreneus'
+                        name='Enterpreneus'
                         label='Enterpreneus'
                         onClick={this.ToggleClass}
                     />
@@ -422,25 +422,25 @@ class Q8 extends Component {
                     />
                     <ValidatedInput
                         type='checkbox'
-                        name='working_class'
+                        name='Working Class'
                         label='Working Class'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
-                        name='low_income'
+                        name='Low Income'
                         label='Low Income'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
-                        name='local-community'
+                        name='Local Community'
                         label='Local Community'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
-                        name='not_sure'
+                        name="Don't know"
                         label="Don't know"
                         onClick={this.ToggleClass}
                     />
@@ -482,7 +482,7 @@ class Q9 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_website: 'no', website_address: '',what_you_like: '', what_you_dislike: '' }, 1);
+        this.props.skipQuestions({has_website: 'No', website_address: '',what_you_like: '', what_you_dislike: '' }, 1);
       }
       renderForm(has) {
         return has ? <SiteForm {...this.props} /> : '' ;
@@ -518,7 +518,7 @@ class SiteForm extends Component {
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion(value);
+    this.props.nextQuestion({...value, has_website: "Yes"});
   }
   _handleInvalidSubmit(errors, values) {
   }
@@ -603,19 +603,19 @@ class Q10 extends Component {
                 <FormGroup>
                   <ValidatedInput
                       type='checkbox'
-                      name='has_writings'
+                      name='Yes I have'
                       label='Yes I have'
                       onClick={this.ToggleClass}
                   />
                   <ValidatedInput
                       type='checkbox'
-                      name='old_writings'
+                      name='From Old site'
                       label='From Old site'
                       onClick={this.ToggleClass}
                   />
                   <ValidatedInput
                       type='checkbox'
-                      name='provide_me'
+                      name='Please Provide me'
                       label='Please Provide me'
                       onClick={this.ToggleClass}
                   />
@@ -674,19 +674,19 @@ class Q11 extends Component {
                 <FormGroup>
                   <ValidatedInput
                       type='checkbox'
-                      name='myself'
+                      name='My Self'
                       label='My Self'
                       onClick={this.ToggleClass}
                   />
                   <ValidatedInput
                       type='checkbox'
-                      name='employe'
+                      name='Employe'
                       label='Employe'
                       onClick={this.ToggleClass}
                   />
                   <ValidatedInput
                       type='checkbox'
-                      name='updating_plans'
+                      name='Tell me more'
                       label='Tell me about Your Maintence and updating plans'
                       onClick={this.ToggleClass}
                   />
@@ -787,7 +787,7 @@ class Q13 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_domain: 'no', domain_name: '', domain_pass: '', domain_user_name: '', go_daddy: false, other_domain: false, 'register.com' : false}, 1);
+        this.props.skipQuestions({has_domain: 'no', domain_name: '', domain_pass: '', domain_user_name: ''}, 1);
       }
       renderForm(has) {
         return has ? <DomainForm {...this.props} /> : '' ;
@@ -854,19 +854,19 @@ class DomainForm extends Component {
             <FormGroup>
                 <ValidatedInput
                     type='checkbox'
-                    name='go_daddy'
+                    name='Go Daddy'
                     label='Go Daddy'
                     onClick={this.ToggleClass}
                 />
                   <ValidatedInput
                     type='checkbox'
-                    name='register.com'
+                    name='Register.com'
                     label='Register.com'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='other_domain'
+                    name='Other'
                     label='Other'
                     onClick={this.ToggleClass}
                 />
@@ -923,7 +923,7 @@ class Q14 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_email_as_domain: 'no', gmail: false, outlook: false, other_email: false, domain_email_other: ''}, 1);
+        this.props.skipQuestions({has_email_as_domain: 'no', domain_email_other: ''}, 1);
       }
       renderForm(has) {
         return has ? <DomainEmail {...this.props} /> : '' ;
@@ -982,19 +982,19 @@ class DomainEmail extends Component {
             <FormGroup>
                 <ValidatedInput
                     type='checkbox'
-                    name='gmail'
+                    name='Gmail'
                     label='Gmail'
                     onClick={this.ToggleClass}
                 />
                   <ValidatedInput
                     type='checkbox'
-                    name='outlook'
+                    name='Outlook'
                     label='Outlook'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='other_email'
+                    name='Other'
                     label='Other'
                     onClick={this.ToggleClass}
                 />
@@ -1040,7 +1040,7 @@ class Q15 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_hosting: 'no', go_daddy_hosting: false, blue_host: false, host_gator: false, ix_hosting: false, '1&1': false, Other: false, hosting_other: '', ftp_user_name: '', ftp_pass: ''}, 1);
+        this.props.skipQuestions({has_hosting: 'No', hosting_other: '', ftp_user_name: '', ftp_pass: ''}, 1);
       }
       renderForm(has) {
         return has ? <HostingForm {...this.props} /> : '' ;
@@ -1079,7 +1079,7 @@ class HostingForm extends Component {
     this.ToggleClass = this.ToggleClass.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion({...value, has_hosting: 'true'});
+    this.props.nextQuestion({...value, has_hosting: 'Yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
@@ -1099,25 +1099,25 @@ class HostingForm extends Component {
             <FormGroup>
                 <ValidatedInput
                     type='checkbox'
-                    name='go_daddy_hosting'
+                    name='Go Daddy'
                     label='Go Daddy'
                     onClick={this.ToggleClass}
                 />
                   <ValidatedInput
                     type='checkbox'
-                    name='blue_host'
+                    name='Blue Host'
                     label='Blue Host'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='host_gator'
+                    name='Host Gator'
                     label='Host Gator'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='ix_hosting'
+                    name='ix web hosting'
                     label='ix web hosting'
                     onClick={this.ToggleClass}
                 />
@@ -1129,7 +1129,7 @@ class HostingForm extends Component {
                 />
                 <ValidatedInput
                     type='checkbox'
-                    name='other'
+                    name='Other'
                     label='Other'
                     onClick={this.ToggleClass}
                 />
@@ -1228,7 +1228,7 @@ class Q16 extends Component {
                     />
               <ValidatedInput
                     type='text'
-                    name='contact_tel_3'
+                    name='public_tel_3'
                     bsSize='small'
                     placeholder='Phone'
                     />
@@ -1302,7 +1302,7 @@ class Q18 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_social: 'no', twitter: '', facebook: '', instegram: '', other_social: ''}, 1);
+        this.props.skipQuestions({has_social: 'No', twitter: '', facebook: '', instegram: '', other_social: ''}, 1);
       }
       renderForm(has) {
         return has ? <SocialForm {...this.props} /> : '' ;
@@ -1340,7 +1340,7 @@ class SocialForm extends Component {
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
   }
   _handleValidSubmit(value) {
-    this.props.nextQuestion({...value,has_social: 'yes'});
+    this.props.nextQuestion({...value,has_social: 'Yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
