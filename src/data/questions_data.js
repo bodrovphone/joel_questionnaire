@@ -41,13 +41,29 @@ class Q2 extends Component {
                 onValidSubmit={this._handleValidSubmit.bind(this)}
                 onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
             >
-                <ValidatedInput
-                        type='text'
-                        name='company_name'
-                        validate='required'
-                        placeholder='Company Name'
-                        errorHelp={'Please enter your company name'}
-                        />
+                <div className="relative">
+                  <ValidatedInput
+                          type='text'
+                          name='company_name'
+                          validate='required'
+                          label='Company Name'
+                          labelClassName='cd-label'
+                          groupClassName="hvr-underline-from-center"
+                          onFocus={(e) => {
+                                    e.target.previousSibling.classList.remove('unfocus');
+                                    e.target.previousSibling.classList.add('focus');
+                                  }
+                          }
+                          onBlur={(e) => {
+                            console.log(e.target.value);
+                                    if (e.target.value == '') {
+                                        e.target.previousSibling.classList.remove('focus');
+                                        e.target.previousSibling.classList.add('unfocus');
+                                      }
+                                  }
+                          }
+                          />
+                </div>
                 <RadioGroup 
                         name='number_of_employes'
                         label='Number of emloyes including you.'
@@ -1003,6 +1019,7 @@ class DomainEmail extends Component {
             <div className="custom-next-centered">
                 <ValidatedInput
                       type='text'
+                      validate='isEmail'
                       name='domain_email_other'
                       bsSize='small'
                       placeholder='Type your answer'
@@ -1193,7 +1210,7 @@ class Q16 extends Component {
               <ValidatedInput
                     type='text'
                     name='public_email_1'
-                    validate='required'
+                    validate='required,isEmail'
                     bsSize='small'
                     label='Please type in your public email'
                     placeholder='http://'
@@ -1202,12 +1219,14 @@ class Q16 extends Component {
                     type='text'
                     name='public_email_2'
                     bsSize='small'
+                    validate='isEmail'
                     label='List all the other emails you want to list on the site'
                     placeholder='http://'
                     />
               <ValidatedInput
                     type='text'
                     name='public_email_3'
+                    validate='isEmail'
                     bsSize='small'
                     placeholder='http://'
                     />
@@ -1216,6 +1235,7 @@ class Q16 extends Component {
                     type='text'
                     name='public_tel_1'
                     bsSize='small'
+                    validate={v => /^\d+$/.test(v)}
                     label='Please type in your public telephone'
                     placeholder='Phone'
                     />
@@ -1223,6 +1243,7 @@ class Q16 extends Component {
                     type='text'
                     name='public_tel_2'
                     bsSize='small'
+                    validate={v => /^\d+$/.test(v)}
                     label='List all the other phones you want to list on the site'
                     placeholder='Phone'
                     />
@@ -1230,6 +1251,7 @@ class Q16 extends Component {
                     type='text'
                     name='public_tel_3'
                     bsSize='small'
+                    validate={v => /^\d+$/.test(v)}
                     placeholder='Phone'
                     />
               <Button 
@@ -1417,12 +1439,14 @@ class Q19 extends Component {
             <ValidatedInput
                       type='text'
                       name='contact_email'
+                      validate='isEmail'
                       bsSize='small'
                       placeholder='Email'
                       />
           <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Could we grab your phone number?</h3>
             <ValidatedInput
-                      type='text'
+                      type='number'
+                      validate={v => /^\d+$/.test(v)}
                       name='contact_tel'
                       bsSize='small'
                       placeholder='Phone'
@@ -1489,4 +1513,4 @@ class Q21 extends Component {
 };
 
 
-export default [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21];
+export default [Q2, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21];
