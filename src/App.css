@@ -193,7 +193,7 @@ label {
 label.control-label {
   color: rgb(140, 149, 164);
 }
-.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+.container .radio input[type="radio"], .container .radio-inline input[type="radio"], .container .checkbox input[type="checkbox"], .container .checkbox-inline input[type="checkbox"] {
       margin-left: -30px;
 }
 
@@ -210,16 +210,22 @@ label.control-label {
   box-shadow: none !important;
   border-color: rgba(0,0,0,0);
 }
-.container .form-control:focus {
+.form-control {
+  background-color: rgba(0,0,0,0) !important;
+}
+.container input.form-control:focus {
   border-bottom: 2px solid #005ce8 !important;
 }
 /*Google animations */
 .relative {
   position: relative;
 }
-.cd-label {
+.container .relative .cd-label {
   position: absolute;
   top: -5px;
+  z-index: -5;
+  box-shadow: none;
+  border: none;
 }
 .focus .cd-label {
   top: -5px;
@@ -240,18 +246,20 @@ label.control-label {
 .focus {
     top: -5px;
     animation-name: focusIn;
-    animation-duration: 1s;
+    animation-duration: .5s;
     animation-fill-mode: forwards;
 }
 
 .unfocus {
     top: -30px;
     animation-name: focusOut;
-    animation-duration: 1s;
+    animation-duration: .5s;
     animation-fill-mode: forwards;
 }
 
-
+.container .relative .hvr-underline-from-center {
+  display: block;
+}
 .hvr-underline-from-center:before {
   content: "";
   position: absolute;
@@ -271,4 +279,55 @@ label.control-label {
 .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
   left: 0;
   right: 0;
+}
+
+
+
+/*RADIO button effect*/
+
+input[type='radio'] {
+  -webkit-appearance: none; /* remove default */
+  display: block;
+  margin: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  vertical-align: middle;
+  box-shadow: hsla(0,0%,100%,.15) 0 1px 1px, inset hsla(0,0%,0%,.5) 0 0 0 1px;
+  background-color: hsla(0,0%,0%,.2);
+  background-image: -webkit-radial-gradient( hsla(200,100%,90%,1) 0%, hsla(200,100%,70%,1) 15%, hsla(200,100%,60%,.3) 28%, hsla(200,100%,30%,0) 70% );
+  background-repeat: no-repeat;
+  -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
+    -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+  outline: none;
+}
+input[type='radio']:checked {
+  -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+    -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+}
+input[type='radio']:active {
+  -webkit-transform: scale(1.5);
+  -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
+}
+
+
+
+/* The up/down direction logic */
+
+input[type='radio'],
+input[type='radio']:active {
+  background-position: 0 24px;
+}
+input[type='radio']:checked {
+  background-position: 0 0;
+}
+input[type='radio']:checked ~ input[type='radio'],
+input[type='radio']:checked ~ input[type='radio']:active {
+  background-position: 0 -24px;
+}
+
+.container input[type='radio']:focus {
+  outline: none;
+      outline-color: transparent;
 }
