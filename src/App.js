@@ -98,11 +98,16 @@ class App extends Component {
       responses: [...this.state.responses, value]
     });
   }
+  componentWillUpdate(nextProps, nextState) {
+    document.getElementById('questions').classList.add('loading');
+    setTimeout(function(){ document.getElementById('questions').classList.remove('loading'); }, 700);
+  }
   render() {
 
     console.log('responses', this.state.responses);
     return (
         <section id="questions" className="question-box">
+          <div className="loading-progress"></div>
           <Header questionNumber={this.state.questionNumber} />
           <Question questionNumber={this.state.questionNumber}
                     nextQuestion={this.nextQuestion}

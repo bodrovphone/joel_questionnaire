@@ -233,27 +233,27 @@ label.control-label {
 
 /* The animation code */
 @keyframes focusIn {
-    from {top: -5px;}
-    to {top: -30px;}
+    from {top: -5px; transform: scale(1);}
+    to {top: -30px; transform: scale(0.75);}
 }
 
 @keyframes focusOut {
-    from {top: -30px;}
-    to {top: -5px;}
+    from {top: -30px;  transform: scale(0.75);}
+    to {top: -5px; transform: scale(1);}
 }
 
 /* The element to apply the animation to */
 .focus {
     top: -5px;
     animation-name: focusIn;
-    animation-duration: .5s;
+    animation-duration: .3s;
     animation-fill-mode: forwards;
 }
 
 .unfocus {
     top: -30px;
     animation-name: focusOut;
-    animation-duration: .5s;
+    animation-duration: .3s;
     animation-fill-mode: forwards;
 }
 
@@ -285,49 +285,197 @@ label.control-label {
 
 /*RADIO button effect*/
 
-input[type='radio'] {
-  -webkit-appearance: none; /* remove default */
-  display: block;
-  margin: 10px;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
+
+@keyframes click-wave {
+  0% {
+    height: 20px;
+    width: 20px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
+    margin-left: -40px;
+    margin-top: -40px;
+    opacity: 0;
+  }
+}
+
+.radio input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: -3px;
+  height: 20px;
+  width: 20px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
   cursor: pointer;
-  vertical-align: middle;
-  box-shadow: hsla(0,0%,100%,.15) 0 1px 1px, inset hsla(0,0%,0%,.5) 0 0 0 1px;
-  background-color: hsla(0,0%,0%,.2);
-  background-image: -webkit-radial-gradient( hsla(200,100%,90%,1) 0%, hsla(200,100%,70%,1) 15%, hsla(200,100%,60%,.3) 28%, hsla(200,100%,30%,0) 70% );
-  background-repeat: no-repeat;
-  -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
-    -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+  display: inline-block;
+  margin-right: 0.5rem;
   outline: none;
+  position: relative;
+  z-index: 1000;
+  outline: none !important;
 }
-input[type='radio']:checked {
-  -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
-    -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+.radio input[type="radio"]:hover {
+  background: #9faab7;
+  outline: none !important;
 }
-input[type='radio']:active {
-  -webkit-transform: scale(1.5);
-  -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
+.radio input[type="radio"]:checked {
+  background: #4285f4;
+  outline: none !important;
+}
+.radio input[type="radio"]:checked::before {
+  height: 4 0px;
+  width: 20px;
+  position: absolute;
+  content: '•';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 20px;
+  outline: none !important;
+}
+.radio input[type="radio"]:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #4285f4;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+  outline: none !important;
+}
+.radio input[type="radio"] {
+  border-radius: 50%;
+  outline: none !important;
+}
+.radio input[type="radio"]::after {
+  border-radius: 50%;
+  outline: none !important;
 }
 
 
 
-/* The up/down direction logic */
+@keyframes boqChromePageProgressAnimation {
+    0% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left;
+        transform-origin: left
+    }
 
-input[type='radio'],
-input[type='radio']:active {
-  background-position: 0 24px;
-}
-input[type='radio']:checked {
-  background-position: 0 0;
-}
-input[type='radio']:checked ~ input[type='radio'],
-input[type='radio']:checked ~ input[type='radio']:active {
-  background-position: 0 -24px;
+    40% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left;
+        transform-origin: left
+    }
+
+    50% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right;
+        transform-origin: right
+    }
+
+    90% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right;
+        transform-origin: right
+    }
+
+    to {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right;
+        transform-origin: right
+    }
 }
 
-.container input[type='radio']:focus {
-  outline: none;
-      outline-color: transparent;
+@-webkit-keyframes boqChromePageProgressAnimation {
+    0% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left;
+        transform-origin: left
+    }
+
+    40% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left;
+        transform-origin: left
+    }
+
+    50% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right;
+        transform-origin: right
+    }
+
+    90% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right;
+        transform-origin: right
+    }
+
+    to {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right;
+        transform-origin: right
+    }
+}
+#root {
+  position: relative;
+  z-index: 0;
+}
+.loading-progress {
+  height: 5px;
+  background-color: rgb(239, 251, 255);
+}
+section.loading {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  z-index: 2;
+
+}
+
+section.loading .custom-header {
+  visibility: hidden;
+}
+
+section.loading .loading-progress {
+  -webkit-animation: boqChromePageProgressAnimation 1s infinite;
+    animation: boqChromePageProgressAnimation 1s infinite;
+    -webkit-animation-timing-function: cubic-bezier(0.4,0.0,1,1);
+    animation-timing-function: cubic-bezier(0.4,0.0,1,1);
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1%;
+    background: #68e;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
 }
