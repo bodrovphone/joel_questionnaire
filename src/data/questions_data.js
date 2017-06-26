@@ -7,7 +7,8 @@ class Q1 extends Component {
       return (
         <div className="custom-question-centered">
               <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Let's get started</h3> 
-              <p>We just to grab some information of your company in order to understand your needs well, and provide you with the best solutions for you.</p>
+              <p>To identify your true needs and deliver the solution that works for you,
+we need to gather some information about your business</p>
               <Button bsStyle="primary"
                       onClick={this.props.nextQuestion}
                       >
@@ -49,7 +50,7 @@ class Q2 extends Component {
                           type='text'
                           name='company_name'
                           validate='required'
-                          label='Company Name'
+                          label='What is the name of your company?'
                           labelClassName='cd-label'
                           groupClassName="hvr-underline-from-center"
                           onFocus={(e) => {
@@ -69,12 +70,12 @@ class Q2 extends Component {
                 </div>
                 <RadioGroup 
                         name='number_of_employes'
-                        label='Number of emloyes including you.'
+                        label='How many people are on staff (including yourself)?'
                         validate='required'
                         errorHelp='Please choose option.'>
                     <Radio value='Just you' label='Just you' />
-                    <Radio value='2-9' label='2-9' />
-                    <Radio value='9-30' label='9-30' />
+                    <Radio value='2-9' label='2-10' />
+                    <Radio value='9-30' label='10-30' />
                     <Radio value='30-100' label='30-100' />
                     <Radio value='100+' label='100+' />
                 </RadioGroup>
@@ -108,7 +109,7 @@ class Q3 extends Component {
     render() {
       return (
         <div className="custom-question-centered">
-          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Can you tell us breefly what does your business actually do?</h3> 
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What exactly do you do?</h3> 
           <Form
                 onValidSubmit={this._handleValidSubmit.bind(this)}
                 onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
@@ -118,7 +119,7 @@ class Q3 extends Component {
                         type='text'
                         name='about_business'
                         validate='required'
-                        label='Type your answer'
+                        label='Let us know all about the products or ideas you are selling'
                         labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
                         onFocus={(e) => {
@@ -171,7 +172,7 @@ class Q4 extends Component {
       return (
             <div>
                 <div className="custom-question-centered">
-                      <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What makes your company remarkable? unique to everyone else</h3> 
+                      <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What is unique about your company?</h3> 
                 </div>
                 <Form
                     onValidSubmit={this._handleValidSubmit.bind(this)}
@@ -182,7 +183,7 @@ class Q4 extends Component {
                       type='text'
                       name='unique'
                       bsSize='small'
-                      label='type your answer or select 1 or mulitple points'
+                      label='please type your answer'
                       labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
                         onFocus={(e) => {
@@ -200,6 +201,10 @@ class Q4 extends Component {
                             }
                       />
                 </div>
+                <div className="custom-next-centered">
+                  <h5>Which qualities best describe your company?</h5>
+                    <h6>(check all that apply)</h6>
+                </div>
                 <div className="custom-buttons-centered">
                 <FormGroup>
                 <ValidatedInput
@@ -211,57 +216,58 @@ class Q4 extends Component {
                   <ValidatedInput
                     type='checkbox'
                     name='Low Pricing'
-                    label='Low Pricing'
+                    label='Price'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
                     name='Quick'
-                    label='Quick'
+                    label='Speed'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
                     name='Customer service'
-                    label='Customer service'
+                    label='Service'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
                     name='Experianced'
-                    label='Experianced'
+                    label='Experience'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
                     name='Stylish'
-                    label='Stylish'
+                    label='Trend'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
                     name='Luxary'
-                    label='Luxary'
+                    label='Luxury'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
                     name='High-End'
-                    label='High-End'
+                    label='Ease'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
                     type='checkbox'
                     name='Affordable'
-                    label='Affordable'
+                    label='Expertise'
                     onClick={this.ToggleClass}
                 />
-                <ValidatedInput
+                {/* <ValidatedInput
                     type='checkbox'
                     name='Hassel Free'
                     label='Hassel Free'
                     onClick={this.ToggleClass}
                 />
+                */}
                 <ValidatedInput
                     type='checkbox'
                     name='All in one'
@@ -302,7 +308,7 @@ class Q5 extends Component {
       render() {
       return (
       <div className="custom-question-centered">
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What are your main competitors?</h3> 
+            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Who are your main competitors?</h3> 
           <Form
                 onValidSubmit={this._handleValidSubmit.bind(this)}
                 onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
@@ -357,8 +363,7 @@ class Q6 extends Component {
     render() {
       return (
         <div className="custom-question-centered">
-          <h5 className="m-t-0 m-b-lg bl-blue-dark display-2">About your website goals</h5>
-          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What type of website do you need?</h3> 
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Which best describes the type of website you need?</h3> 
           
           <Form
               onValidSubmit={this._handleValidSubmit.bind(this)}
@@ -372,7 +377,7 @@ class Q6 extends Component {
                   <Radio value='Informational' label='Informational' />
                   <Radio value='Portfolio' label='Portfolio' />
                   <Radio value='Catalog' label='Catalog' />
-                  <Radio value='Compaign' label='Compaign' />
+                  <Radio value='Compaign' label='Campaign' />
               </RadioGroup>
             <Button 
                 type="submit"
@@ -401,8 +406,7 @@ class Q7 extends Component {
     render() {
       return (
         <div className="custom-question-centered">
-            <h5 className="m-t-0 m-b-lg bl-blue-dark display-2">About your website goals</h5>
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What is the main goal or purpose of the site?</h3> 
+            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Which best describes your goal in launching this website?</h3> 
             <Form
               onValidSubmit={this._handleValidSubmit.bind(this)}
               onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
@@ -412,10 +416,10 @@ class Q7 extends Component {
                         label='Select 1 of the options.'
                         validate='required'
                         errorHelp='Please choose option.'>
-                    <Radio value='Simply Online Presence' label='Simply Online Presence' />
-                    <Radio value='Show Off' label='Show Off' />
-                    <Radio value='Inspire/Branding' label='Inspire/Branding' />
-                    <Radio value='Drive sales' label='Drive sales' />
+                    <Radio value='Simply Online Presence' label='Establish an online presence' />
+                    <Radio value='Show Off' label='Showcase what I have to offer' />
+                    <Radio value='Inspire/Branding' label='Inspire my audience with ideas' />
+                    <Radio value='Drive sales' label='Drive traffic and sales' />
                 </RadioGroup>
               <Button 
                   type="submit"
@@ -452,7 +456,7 @@ class Q8 extends Component {
         return (
           <div>
               <div className="custom-question-centered">
-                    <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Who are your target audience?</h3> 
+                    <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Who would you say is your target audience?</h3> 
               </div>
               <Form
                   onValidSubmit={this._handleValidSubmit.bind(this)}
@@ -486,25 +490,25 @@ class Q8 extends Component {
                     <ValidatedInput
                         type='checkbox'
                         name='Upper Class'
-                        label='Upper Class'
+                        label='Upper class'
                         onClick={this.ToggleClass}
                     />
                       <ValidatedInput
                         type='checkbox'
                         name='Middle Class'
-                        label='Middle Class'
+                        label='Middle class'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
                         name='Low Class'
-                        label='Low Class'
+                        label='Lower class'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
                         name='Enterpreneus'
-                        label='Enterpreneus'
+                        label='Entrepreneurs'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
@@ -516,25 +520,25 @@ class Q8 extends Component {
                     <ValidatedInput
                         type='checkbox'
                         name='Working Class'
-                        label='Working Class'
+                        label='Working class'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
                         name='Low Income'
-                        label='Low Income'
+                        label='Everyone'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
                         name='Local Community'
-                        label='Local Community'
+                        label='Local community'
                         onClick={this.ToggleClass}
                     />
                     <ValidatedInput
                         type='checkbox'
                         name="Don't know"
-                        label="Don't know"
+                        label="Not sure"
                         onClick={this.ToggleClass}
                     />
                   </FormGroup>
@@ -2088,8 +2092,9 @@ class Q21 extends Component {
     render() {
       return (
         <div className="custom-question-centered custom-9 custom-13">
-          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Thanks for your coaperation! will get back to you as soon we have a Sketch of your site.</h3>
-                  <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Will share with you a google drive folder where you should please upload your assets like Logo, Images, etc.</h3>
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">TThank you for your responses!</h3>
+                  <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">The Blue Label team is now hard at work planning your perfect site.
+Stay tuned for an email update from one of our creative professionals</h3>
         </div>
       );
     }
