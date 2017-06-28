@@ -34,13 +34,14 @@ class Q2 extends Component {
         // that failed to validate 
     }
     componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
     
     render() {
       return (
         <div className="custom-question-centered">
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Tell us about your business</h3> 
+            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Tell us about your business</h3>
+            <h5>What is the name of your company?</h5>
             <Form
                 onValidSubmit={this._handleValidSubmit.bind(this)}
                 onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
@@ -50,7 +51,7 @@ class Q2 extends Component {
                           type='text'
                           name='company_name'
                           validate='required'
-                          label='What is the name of your company?'
+                          label='company name'
                           labelClassName='cd-label'
                           groupClassName="hvr-underline-from-center"
                           onFocus={(e) => {
@@ -59,7 +60,6 @@ class Q2 extends Component {
                                   }
                           }
                           onBlur={(e) => {
-                            console.log(e.target.value);
                                     if (e.target.value == '') {
                                         e.target.previousSibling.classList.remove('focus');
                                         e.target.previousSibling.classList.add('unfocus');
@@ -104,12 +104,13 @@ class Q3 extends Component {
         // that failed to validate 
     }
     componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
     render() {
       return (
         <div className="custom-question-centered">
           <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What exactly do you do?</h3> 
+          <h5>Let us know all about the products or ideas you are selling</h5>
           <Form
                 onValidSubmit={this._handleValidSubmit.bind(this)}
                 onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
@@ -119,7 +120,7 @@ class Q3 extends Component {
                         type='text'
                         name='about_business'
                         validate='required'
-                        label='Let us know all about the products or ideas you are selling'
+                        label='Your answer'
                         labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
                         onFocus={(e) => {
@@ -128,7 +129,6 @@ class Q3 extends Component {
                                     }
                             }
                             onBlur={(e) => {
-                              console.log(e.target.value);
                                       if (e.target.value == '') {
                                           e.target.previousSibling.classList.remove('focus');
                                           e.target.previousSibling.classList.add('unfocus');
@@ -165,9 +165,6 @@ class Q4 extends Component {
       ToggleClass(e) {
         e.target.classList.toggle('selected')
       }
-      componentDidMount() {
-        document.querySelector('input[type="text"]').focus();
-      }
       render() {
       return (
             <div>
@@ -180,25 +177,12 @@ class Q4 extends Component {
                 >
                 <div className="custom-input-centered relative">
                       <ValidatedInput
-                      type='text'
+                      type='textarea'
                       name='unique'
                       bsSize='small'
-                      label='please type your answer'
+                      placeholder='please type your answer'
                       labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                              console.log(e.target.value);
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                      groupClassName="hvr-underline-from-center"
                       />
                 </div>
                 <div className="custom-next-centered">
@@ -261,13 +245,12 @@ class Q4 extends Component {
                     label='Expertise'
                     onClick={this.ToggleClass}
                 />
-                {/* <ValidatedInput
+                <ValidatedInput
                     type='checkbox'
                     name='Hassel Free'
-                    label='Hassel Free'
+                    label='Not sure'
                     onClick={this.ToggleClass}
                 />
-                */}
                 <ValidatedInput
                     type='checkbox'
                     name='All in one'
@@ -303,7 +286,7 @@ class Q5 extends Component {
         // that failed to validate 
     }
     componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
       render() {
       return (
@@ -317,7 +300,6 @@ class Q5 extends Component {
               <ValidatedInput
                       type='text'
                       name='competitors'
-                      validate='required'
                       label='type your answer'
                       labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
@@ -327,7 +309,6 @@ class Q5 extends Component {
                                     }
                             }
                             onBlur={(e) => {
-                              console.log(e.target.value);
                                       if (e.target.value == '') {
                                           e.target.previousSibling.classList.remove('focus');
                                           e.target.previousSibling.classList.add('unfocus');
@@ -369,11 +350,9 @@ class Q6 extends Component {
               onValidSubmit={this._handleValidSubmit.bind(this)}
               onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
           >
-            <RadioGroup 
+            <RadioGroup
                       name='website_type'
-                      label='Select 1 of the options.'
-                      validate='required'
-                      errorHelp='Please choose option.'>
+                      label='Select 1 of the options.'>
                   <Radio value='Informational' label='Informational' />
                   <Radio value='Portfolio' label='Portfolio' />
                   <Radio value='Catalog' label='Catalog' />
@@ -414,7 +393,6 @@ class Q7 extends Component {
               <RadioGroup 
                         name='site_purpose'
                         label='Select 1 of the options.'
-                        validate='required'
                         errorHelp='Please choose option.'>
                     <Radio value='Simply Online Presence' label='Establish an online presence' />
                     <Radio value='Show Off' label='Showcase what I have to offer' />
@@ -449,9 +427,6 @@ class Q8 extends Component {
       ToggleClass(e) {
         e.target.classList.toggle('selected')
       }
-      componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
-    }
       render() {
         return (
           <div>
@@ -476,7 +451,6 @@ class Q8 extends Component {
                                     }
                             }
                             onBlur={(e) => {
-                              console.log(e.target.value);
                                       if (e.target.value == '') {
                                           e.target.previousSibling.classList.remove('focus');
                                           e.target.previousSibling.classList.add('unfocus');
@@ -613,6 +587,7 @@ class SiteForm extends Component {
   constructor(props) {
     super(props);
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
+    this.state = {url: 'http://'};
   }
   _handleValidSubmit(value) {
     this.props.nextQuestion({...value, has_website: "Yes"});
@@ -620,7 +595,7 @@ class SiteForm extends Component {
   _handleInvalidSubmit(errors, values) {
   }
   componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
   render() {
     return(
@@ -636,71 +611,32 @@ class SiteForm extends Component {
                     name='website_address'
                     validate='required'
                     bsSize='small'
-                    label='http://'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                              console.log(e.target.value);
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                    value={this.state.url}
+                    labelClassName='cd-label'
+                    groupClassName="hvr-underline-from-center"
+                    onChange={e => this.setState({url: e.target.value})}
                     />
               </div>
               <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What DO YOU like about it?</h3>
               <div className="relative">
               <ValidatedInput
-                    type='text'
+                    type='textarea'
                     name='what_you_like'
-                    validate='required'
                     bsSize='small'
-                    label='please type your answer'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                              console.log(e.target.value);
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                    placeholder='please type your answer'
+                    labelClassName='cd-label'
+                    groupClassName="hvr-underline-from-center"
                     />
               </div>
               <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">And what DON'T YOU like about it?</h3>
               <div className="relative">
               <ValidatedInput
-                    type='text'
+                    type='textarea'
                     name='what_you_dislike'
-                    validate='required'
                     bsSize='small'
-                    label='please type your answer'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                    placeholder='please type your answer'
+                    labelClassName='cd-label'
+                    groupClassName="hvr-underline-from-center"
                     />
               </div>
             </div>
@@ -732,15 +668,12 @@ class Q10 extends Component {
       e.target.classList.toggle('selected')
     }
   }
-  componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
-    }
   render() {
       return (
           <div className="custom-question-centered custom-10">
               <div className="custom-h3">
                 <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What will be written on the website?</h3>
-                <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">do you already have writing?</h3>
+                <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">do you already have writings?</h3>
               </div>
               <Form
                 onValidSubmit={this._handleValidSubmit.bind(this)}
@@ -752,7 +685,7 @@ class Q10 extends Component {
                   type='text'
                   name='about_writings'
                   bsSize='small'
-                  label='http://'
+                  label='your content'
                         labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
                         onFocus={(e) => {
@@ -761,7 +694,6 @@ class Q10 extends Component {
                                     }
                             }
                             onBlur={(e) => {
-                              console.log(e.target.value);
                                       if (e.target.value == '') {
                                           e.target.previousSibling.classList.remove('focus');
                                           e.target.previousSibling.classList.add('unfocus');
@@ -819,9 +751,6 @@ class Q11 extends Component {
       e.target.classList.toggle('selected')
     }
   }
-  componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
-    }
   render() {
       return (
         <div>
@@ -848,7 +777,6 @@ class Q11 extends Component {
                                     }
                             }
                             onBlur={(e) => {
-                              console.log(e.target.value);
                                       if (e.target.value == '') {
                                           e.target.previousSibling.classList.remove('focus');
                                           e.target.previousSibling.classList.add('unfocus');
@@ -898,6 +826,7 @@ class Q12 extends Component {
   constructor(props) {
     super(props);
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
+    this.state = {url1: 'http://', url2: 'http://', url3: 'http://', url4: 'http://'};
   }
   _handleValidSubmit(value) {
     this.props.nextQuestion(value);
@@ -905,7 +834,7 @@ class Q12 extends Component {
   _handleInvalidSubmit(errors, values) {
   }
   componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
   render() {
       return (
@@ -920,23 +849,11 @@ class Q12 extends Component {
               <ValidatedInput
                     type='text'
                     name='welldone_1'
-                    validate='required'
                     bsSize='small'
-                    label='http://'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                    value={this.state.url1}
+                    labelClassName='cd-label'
+                    groupClassName="hvr-underline-from-center"
+                    onChange={e => this.setState({url1: e.target.value})}
                     />
               </div>
               <h6>Please type in your website address</h6>
@@ -945,21 +862,10 @@ class Q12 extends Component {
                     type='text'
                     name='welldone_2'
                     bsSize='small'
-                    label='http://'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                    value={this.state.url2}
+                    labelClassName='cd-label'
+                    groupClassName="hvr-underline-from-center"
+                    onChange={e => this.setState({url2: e.target.value})}
                     />
               </div>
               <h6>Please type in your website address</h6>
@@ -968,21 +874,10 @@ class Q12 extends Component {
                     type='text'
                     name='welldone_3'
                     bsSize='small'
-                    label='http://'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                    value={this.state.url3}
+                    labelClassName='cd-label'
+                    groupClassName="hvr-underline-from-center"
+                    onChange={e => this.setState({url3: e.target.value})}
                     />
               </div>
               <h6>Please type in your website address</h6>
@@ -991,21 +886,10 @@ class Q12 extends Component {
                     type='text'
                     name='welldone_4'
                     bsSize='small'
-                    label='http://'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                    value={this.state.url4}
+                    labelClassName='cd-label'
+                    groupClassName="hvr-underline-from-center"
+                    onChange={e => this.setState({url4: e.target.value})}
                     />
               </div>
               <Button 
@@ -1087,9 +971,6 @@ class DomainForm extends Component {
   ToggleClass(e) {
     e.target.classList.toggle('selected')
   }
-  componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
-    }
   render() {
     return(
           <Form
@@ -1121,7 +1002,7 @@ class DomainForm extends Component {
                             }
                     />
                     </div>
-              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Which domain client?</h3>
+              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Under which domain client?</h3>
             </div>
             <div className="custom-buttons-centered custom-form-centered">
             <FormGroup>
@@ -1134,7 +1015,7 @@ class DomainForm extends Component {
                   <ValidatedInput
                     type='checkbox'
                     name='Register.com'
-                    label='Register.com'
+                    label='Google'
                     onClick={this.ToggleClass}
                 />
                 <ValidatedInput
@@ -1407,9 +1288,6 @@ class HostingForm extends Component {
   ToggleClass(e) {
     e.target.classList.toggle('selected')
   }
-  componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
-    }
   render() {
     return(
           <Form
@@ -1552,7 +1430,7 @@ class Q16 extends Component {
   _handleInvalidSubmit(errors, values) {
   }
   componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
   render() {
       return (
@@ -1566,7 +1444,7 @@ class Q16 extends Component {
               <ValidatedInput
                     type='text'
                     name='public_email_1'
-                    validate='required,isEmail'
+                    validate='isEmail'
                     bsSize='small'
                     label='Please type in your public email'
                         labelClassName='cd-label'
@@ -1591,7 +1469,6 @@ class Q16 extends Component {
                     type='text'
                     name='public_email_2'
                     bsSize='small'
-                    validate='isEmail'
                     label='email@'
                         labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
@@ -1613,7 +1490,6 @@ class Q16 extends Component {
               <ValidatedInput
                     type='text'
                     name='public_email_3'
-                    validate='isEmail'
                     bsSize='small'
                      label='email@'
                         labelClassName='cd-label'
@@ -1662,7 +1538,6 @@ class Q16 extends Component {
                       type='text'
                       name='public_tel_2'
                       bsSize='small'
-                      validate={v => /^\d+$/.test(v)}
                       label='tel.:'
                           labelClassName='cd-label'
                           groupClassName="hvr-underline-from-center"
@@ -1685,7 +1560,6 @@ class Q16 extends Component {
                     type='text'
                     name='public_tel_3'
                     bsSize='small'
-                    validate={v => /^\d+$/.test(v)}
                     label='tel.:'
                           labelClassName='cd-label'
                           groupClassName="hvr-underline-from-center"
@@ -1724,7 +1598,7 @@ class Q17 extends Component {
   _handleInvalidSubmit(errors, values) {
   }
   componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
   render() {
     return(
@@ -1834,7 +1708,7 @@ class SocialForm extends Component {
   _handleInvalidSubmit(errors, values) {
   }
   componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
   render() {
     return(
@@ -1954,7 +1828,7 @@ class Q19 extends Component {
     _handleInvalidSubmit(errors, values) {
     }
     componentDidMount() {
-      document.querySelector('input[type="text"]').focus();
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
     render() {
       return (
@@ -2056,9 +1930,6 @@ class Q20 extends Component {
     }
     _handleInvalidSubmit(errors, values) {
     }
-    componentDidMount() {
-      document.querySelector('textarea').focus();
-    }
     render() {
       return (
         <div className="custom-question-centered custom-9 custom-13">
@@ -2067,7 +1938,7 @@ class Q20 extends Component {
               onValidSubmit={this._handleValidSubmit.bind(this)}
               onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
           >
-          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Do you have extra information, comments or requests you would like us to consider?</h3>
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Do you have any information, comments or requests you would like us to consider?</h3>
             <ValidatedInput
                       type='textarea'
                       name='additional_requests'
@@ -2092,7 +1963,7 @@ class Q21 extends Component {
     render() {
       return (
         <div className="custom-question-centered custom-9 custom-13">
-          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">TThank you for your responses!</h3>
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Thank you for your responses!</h3>
                   <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">The Blue Label team is now hard at work planning your perfect site.
 Stay tuned for an email update from one of our creative professionals</h3>
         </div>

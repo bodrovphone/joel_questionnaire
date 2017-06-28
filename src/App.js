@@ -79,7 +79,6 @@ class App extends Component {
     &entry.616775555=${encodeURIComponent(state[19].additional_requests)}
 `;
    */
-    console.log(data);
   }
 
   filterOptions(obj ,entry) {
@@ -100,11 +99,9 @@ class App extends Component {
   }
   componentWillUpdate(nextProps, nextState) {
     document.getElementById('questions').classList.add('loading');
-    setTimeout(function(){ document.getElementById('questions').classList.remove('loading'); }, 700);
+    setTimeout(function(){ document.getElementById('questions').classList.remove('loading'); }, 2200);
   }
   render() {
-
-    console.log('responses', this.state.responses);
     return (
         <section id="questions" className="question-box">
           <div className="loading-progress"></div>
