@@ -670,7 +670,7 @@ class Q10 extends Component {
   }
   render() {
       return (
-          <div className="custom-question-centered custom-10">
+          <div className="custom-question-centered">
               <div className="custom-h3">
                 <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What will be written on the website?</h3>
                 <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">do you already have writings?</h3>
@@ -679,13 +679,12 @@ class Q10 extends Component {
                 onValidSubmit={this._handleValidSubmit.bind(this)}
                 onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
               >
-              <h6>type your answer or select 1 or mulitple points</h6>
               <div className="relative">
               <ValidatedInput
                   type='text'
                   name='about_writings'
                   bsSize='small'
-                  label='your content'
+                  label='type your answer or select 1 point'
                         labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
                         onFocus={(e) => {
@@ -702,26 +701,11 @@ class Q10 extends Component {
                             }
               />
               </div>
-                <FormGroup>
-                  <ValidatedInput
-                      type='checkbox'
-                      name='Yes I have'
-                      label='Yes I have'
-                      onClick={this.ToggleClass}
-                  />
-                  <ValidatedInput
-                      type='checkbox'
-                      name='From Old site'
-                      label='From Old site'
-                      onClick={this.ToggleClass}
-                  />
-                  <ValidatedInput
-                      type='checkbox'
-                      name='Please Provide me'
-                      label='Please Provide me'
-                      onClick={this.ToggleClass}
-                  />
-                </FormGroup>
+                <RadioGroup name="writing_optional">
+                    <Radio value='Yes I have' label='Yes I have' />
+                    <Radio value='From Old site' label='From Old site' />
+                    <Radio value='Please Provide me' label='Please Provide me' />
+                </RadioGroup>
               <div className="custom-next-centered">
                 <Button 
                   type="submit"
@@ -962,6 +946,7 @@ class DomainForm extends Component {
     super(props);
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
     this.ToggleClass = this.ToggleClass.bind(this);
+    this.state = {url: 'http://'};
   }
   _handleValidSubmit(value) {
     this.props.nextQuestion({...value, has_domain: 'Yes'});
@@ -983,23 +968,12 @@ class DomainForm extends Component {
               <ValidatedInput
                     type='text'
                     name='domain_name'
-                    validate='required'
+                    validate={v => !(v.length < 9) }
                     bsSize='small'
-                    label='www...'
+                    value={this.state.url}
                         labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
+                        onChange={e => this.setState({url: e.target.value})}
                     />
                     </div>
               <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Under which domain client?</h3>
@@ -1972,4 +1946,4 @@ Stay tuned for an email update from one of our creative professionals</h3>
 };
 
 
-export default [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21];
+export default [Q10, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21];

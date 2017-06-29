@@ -492,3 +492,7 @@ section.loading .loading-progress {
   border: none;
   box-shadow: inset 2px 2px 2px 1px #dddddd;
 }
+
+.has-error input {
+  color: #a94442;
+}
