@@ -2,7 +2,7 @@ import { FormGroup, Radio as Radiolo, Button } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { Form, ValidatedInput, Radio, RadioGroup } from 'react-bootstrap-validation';
 
-class Q1 extends Component {
+class Q0 extends Component {
     render() {
       return (
         <div className="custom-question-centered">
@@ -20,7 +20,7 @@ we need to gather some information about your business</p>
 };
 
 
-class Q2 extends Component {
+class Q1 extends Component {
     constructor(props) {
       super(props);
       this._handleValidSubmit = this._handleValidSubmit.bind(this);
@@ -90,37 +90,34 @@ class Q2 extends Component {
       }
 };
 
-class Q3 extends Component {
-    constructor(props) {
-      super(props);
-      this._handleValidSubmit = this._handleValidSubmit.bind(this);
-    }
-    _handleValidSubmit(value) {
-        this.props.nextQuestion(value);
-    }
- 
-    _handleInvalidSubmit(errors, values) {
-        // Errors is an array containing input names 
-        // that failed to validate 
-    }
-    componentDidMount() {
+class Q2 extends Component {
+  constructor(props) {
+    super(props);
+    this._handleValidSubmit = this._handleValidSubmit.bind(this);
+  }
+  _handleValidSubmit(value) {
+    this.props.nextQuestion(value);
+  }
+  _handleInvalidSubmit(errors, values) {
+  }
+  componentDidMount() {
       setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
     }
-    render() {
-      return (
-        <div className="custom-question-centered">
-          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What exactly do you do?</h3> 
-          <h5>Let us know all about the products or ideas you are selling</h5>
+  render() {
+    return(
           <Form
-                onValidSubmit={this._handleValidSubmit.bind(this)}
-                onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+              onValidSubmit={this._handleValidSubmit.bind(this)}
+              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
             >
+            <div className="custom-question-centered">
+              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Whats your business phone number?</h3>
               <div className="relative">
-                <ValidatedInput
-                        type='text'
-                        name='about_business'
-                        validate='required'
-                        label='Your answer'
+              <ValidatedInput
+                    type='text'
+                    name='business_telephone'
+                    bsSize='small'
+                    validate={v => v ? /^\d+$/.test(v) : true}
+                    label='telephone number'
                         labelClassName='cd-label'
                         groupClassName="hvr-underline-from-center"
                         onFocus={(e) => {
@@ -135,6 +132,126 @@ class Q3 extends Component {
                                         }
                                     }
                             }
+                    />
+              </div>
+              <Button 
+                type="submit"
+                bsStyle="primary">
+                NEXT
+              </Button>
+            </div>
+          </Form>
+          );
+  }
+}
+
+class Q3 extends Component {
+  constructor(props) {
+    super(props);
+    this._handleValidSubmit = this._handleValidSubmit.bind(this);
+  }
+  _handleValidSubmit(value) {
+    this.props.nextQuestion(value);
+  }
+  _handleInvalidSubmit(errors, values) {
+  }
+  componentDidMount() {
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
+    }
+  render() {
+    return(
+          <Form
+              onValidSubmit={this._handleValidSubmit.bind(this)}
+              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+            >
+            <div className="custom-question-centered">
+              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Whats your business address?</h3>
+              <h5>Please write if you want to show on site a address</h5>
+              <div className="relative">
+                  <ValidatedInput
+                        type='text'
+                        name='business_address1'
+                        bsSize='small'
+                        label='optional if you want to show'
+                          labelClassName='cd-label'
+                          groupClassName="hvr-underline-from-center"
+                          onFocus={(e) => {
+                                        e.target.previousSibling.classList.remove('unfocus');
+                                        e.target.previousSibling.classList.add('focus');
+                                      }
+                              }
+                              onBlur={(e) => {
+                                        if (e.target.value == '') {
+                                            e.target.previousSibling.classList.remove('focus');
+                                            e.target.previousSibling.classList.add('unfocus');
+                                          }
+                                      }
+                              }
+                        />
+              </div>
+              <div className="relative">
+                  <ValidatedInput
+                        type='text'
+                        name='business_address2'
+                        bsSize='small'
+                        label='optional if you want to show'
+                          labelClassName='cd-label'
+                          groupClassName="hvr-underline-from-center"
+                          onFocus={(e) => {
+                                        e.target.previousSibling.classList.remove('unfocus');
+                                        e.target.previousSibling.classList.add('focus');
+                                      }
+                              }
+                              onBlur={(e) => {
+                                        if (e.target.value == '') {
+                                            e.target.previousSibling.classList.remove('focus');
+                                            e.target.previousSibling.classList.add('unfocus');
+                                          }
+                                      }
+                              }
+                        />
+              </div>
+              <Button 
+                type="submit"
+                bsStyle="primary">
+                NEXT
+              </Button>
+            </div>
+          </Form>
+          );
+  }
+}
+
+class Q4 extends Component {
+    constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+    }
+    _handleValidSubmit(value) {
+        this.props.nextQuestion(value);
+    }
+ 
+    _handleInvalidSubmit(errors, values) {
+        // Errors is an array containing input names 
+        // that failed to validate 
+    }
+    render() {
+      return (
+        <div className="custom-question-centered">
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">What exactly do you do?</h3> 
+          <h5>Let us know all about the products / Services or ideas you are selling</h5>
+          <Form
+                onValidSubmit={this._handleValidSubmit.bind(this)}
+                onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+            >
+              <div className="relative">
+                <ValidatedInput
+                        type='textarea'
+                        name='about_business'
+                        validate='required'
+                        placeholder='Your answer'
+                        labelClassName='cd-label'
+                        groupClassName="hvr-underline-from-center"
                         />
               </div>
               <Button 
@@ -148,7 +265,7 @@ class Q3 extends Component {
     }
 };
 
-class Q4 extends Component {
+class Q5 extends Component {
       constructor(props) {
       super(props);
       this._handleValidSubmit = this._handleValidSubmit.bind(this);
@@ -186,77 +303,116 @@ class Q4 extends Component {
                       />
                 </div>
                 <div className="custom-next-centered">
-                  <h5>Which qualities best describe your company?</h5>
+                  <Button 
+                    type="submit"
+                    bsStyle="primary">
+                    NEXT
+                  </Button>
+                </div>
+                </Form>
+            </div>
+      );
+    }
+};
+
+class Q6 extends Component {
+      constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+      this.ToggleClass = this.ToggleClass.bind(this);
+      }
+      _handleValidSubmit(value) {
+          this.props.nextQuestion(value);
+      }
+   
+      _handleInvalidSubmit(errors, values) {
+          // Errors is an array containing input names 
+          // that failed to validate 
+      }
+      ToggleClass(e) {
+        e.target.classList.toggle('selected')
+      }
+      render() {
+      return (
+            <div>
+                <div className="custom-question-centered">
+                      <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Which qualities best describe your company?</h3> 
+                </div>
+                <Form
+                    onValidSubmit={this._handleValidSubmit.bind(this)}
+                    onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+                >
+                <div className="custom-next-centered">
                     <h6>(check all that apply)</h6>
                 </div>
                 <div className="custom-buttons-centered">
                 <FormGroup>
-                <ValidatedInput
-                    type='checkbox'
-                    name='Quality'
-                    label='Quality'
-                    onClick={this.ToggleClass}
-                />
                   <ValidatedInput
-                    type='checkbox'
-                    name='Low Pricing'
-                    label='Price'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Quick'
-                    label='Speed'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Customer service'
-                    label='Service'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Experianced'
-                    label='Experience'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Stylish'
-                    label='Trend'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Luxary'
-                    label='Luxury'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='High-End'
-                    label='Ease'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Affordable'
-                    label='Expertise'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Hassel Free'
-                    label='Not sure'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='All in one'
-                    label='All in one'
-                    onClick={this.ToggleClass}
-                />
+                      type='checkbox'
+                      name='Quality'
+                      label='Quality'
+                      onClick={this.ToggleClass}
+                  />
+                    <ValidatedInput
+                      type='checkbox'
+                      name='Price'
+                      label='Price'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Speed'
+                      label='Speed'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Service'
+                      label='Service'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Experience'
+                      label='Experience'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Trend'
+                      label='Trend'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Luxary'
+                      label='Luxury'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Ease'
+                      label='Ease'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Expertise'
+                      label='Expertise'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='All in one'
+                      label='All in one'
+                      onClick={this.ToggleClass}
+                  />
+                  <ValidatedInput
+                      type='checkbox'
+                      name='Not sure'
+                      label='Not sure'
+                      onClick={this.ToggleClass}
+                  />
                 </FormGroup>
                 </div>
                 <div className="custom-next-centered">
@@ -272,145 +428,7 @@ class Q4 extends Component {
     }
 };
 
-class Q5 extends Component {
-    constructor(props) {
-      super(props);
-      this._handleValidSubmit = this._handleValidSubmit.bind(this);
-    }
-    _handleValidSubmit(value) {
-        this.props.nextQuestion(value);
-    }
- 
-    _handleInvalidSubmit(errors, values) {
-        // Errors is an array containing input names 
-        // that failed to validate 
-    }
-    componentDidMount() {
-      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
-    }
-      render() {
-      return (
-      <div className="custom-question-centered">
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Who are your main competitors?</h3> 
-          <Form
-                onValidSubmit={this._handleValidSubmit.bind(this)}
-                onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
-            >
-            <div className="relative">
-              <ValidatedInput
-                      type='text'
-                      name='competitors'
-                      label='type your answer'
-                      labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                      />
-            </div>
-              <Button 
-                  type="submit"
-                  bsStyle="primary">
-                  NEXT
-              </Button>
-          </Form>
-      </div>
-      );
-    }
-};
-
-class Q6 extends Component {
-    constructor(props) {
-      super(props);
-      this._handleValidSubmit = this._handleValidSubmit.bind(this);
-    }
-    _handleValidSubmit(value) {
-        this.props.nextQuestion(value);
-    }
- 
-    _handleInvalidSubmit(errors, values) {
-        // Errors is an array containing input names 
-        // that failed to validate 
-    }
-    render() {
-      return (
-        <div className="custom-question-centered">
-          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Which best describes the type of website you need?</h3> 
-          
-          <Form
-              onValidSubmit={this._handleValidSubmit.bind(this)}
-              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
-          >
-            <RadioGroup
-                      name='website_type'
-                      label='Select 1 of the options.'>
-                  <Radio value='Informational' label='Informational' />
-                  <Radio value='Portfolio' label='Portfolio' />
-                  <Radio value='Catalog' label='Catalog' />
-                  <Radio value='Compaign' label='Campaign' />
-              </RadioGroup>
-            <Button 
-                type="submit"
-                bsStyle="primary">
-                NEXT
-            </Button>
-          </Form>
-        </div>
-      );
-    }
-};
-
 class Q7 extends Component {
-    constructor(props) {
-      super(props);
-      this._handleValidSubmit = this._handleValidSubmit.bind(this);
-    }
-    _handleValidSubmit(value) {
-        this.props.nextQuestion(value);
-    }
- 
-    _handleInvalidSubmit(errors, values) {
-        // Errors is an array containing input names 
-        // that failed to validate 
-    }
-    render() {
-      return (
-        <div className="custom-question-centered">
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Which best describes your goal in launching this website?</h3> 
-            <Form
-              onValidSubmit={this._handleValidSubmit.bind(this)}
-              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
-            >
-              <RadioGroup 
-                        name='site_purpose'
-                        label='Select 1 of the options.'
-                        errorHelp='Please choose option.'>
-                    <Radio value='Simply Online Presence' label='Establish an online presence' />
-                    <Radio value='Show Off' label='Showcase what I have to offer' />
-                    <Radio value='Inspire/Branding' label='Inspire my audience with ideas' />
-                    <Radio value='Drive sales' label='Drive traffic and sales' />
-                </RadioGroup>
-              <Button 
-                  type="submit"
-                  bsStyle="primary">
-                  NEXT
-              </Button>
-            </Form>
-        </div>
-      );
-    }
-};
-
-class Q8 extends Component {
       constructor(props) {
       super(props);
       this._handleValidSubmit = this._handleValidSubmit.bind(this);
@@ -530,8 +548,175 @@ class Q8 extends Component {
     }
 };
 
+class Q8 extends Component {
+    constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+    }
+    _handleValidSubmit(value) {
+        this.props.nextQuestion(value);
+    }
+ 
+    _handleInvalidSubmit(errors, values) {
+        // Errors is an array containing input names 
+        // that failed to validate 
+    }
+    componentDidMount() {
+      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
+    }
+      render() {
+      return (
+      <div className="custom-question-centered">
+            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Who are your main competitors?</h3> 
+          <Form
+                onValidSubmit={this._handleValidSubmit.bind(this)}
+                onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+            >
+            <div className="relative">
+              <ValidatedInput
+                      type='text'
+                      name='competitors'
+                      label='type your answer'
+                      labelClassName='cd-label'
+                        groupClassName="hvr-underline-from-center"
+                        onFocus={(e) => {
+                                      e.target.previousSibling.classList.remove('unfocus');
+                                      e.target.previousSibling.classList.add('focus');
+                                    }
+                            }
+                            onBlur={(e) => {
+                                      if (e.target.value == '') {
+                                          e.target.previousSibling.classList.remove('focus');
+                                          e.target.previousSibling.classList.add('unfocus');
+                                        }
+                                    }
+                            }
+                      />
+            </div>
+              <Button 
+                  type="submit"
+                  bsStyle="primary">
+                  NEXT
+              </Button>
+          </Form>
+      </div>
+      );
+    }
+};
 
 class Q9 extends Component {
+    constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+    }
+    _handleValidSubmit(value) {
+        this.props.nextQuestion(value);
+    }
+ 
+    _handleInvalidSubmit(errors, values) {
+        // Errors is an array containing input names 
+        // that failed to validate 
+    }
+    render() {
+      return (
+        <div className="custom-question-centered">
+          <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Which best describes the type of website you need?</h3> 
+          
+          <Form
+              onValidSubmit={this._handleValidSubmit.bind(this)}
+              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+          >
+            <RadioGroup
+                      name='website_type'
+                      label='Select 1 of the options.'>
+                  <Radio value='Informational' label='Informational' />
+                  <Radio value='Portfolio' label='Portfolio' />
+                  <Radio value='Catalog' label='Catalog' />
+                  <Radio value='Compaign' label='Campaign' />
+                  <Radio value='Not sure' label='Not sure' />
+              </RadioGroup>
+            <Button 
+                type="submit"
+                bsStyle="primary">
+                NEXT
+            </Button>
+          </Form>
+        </div>
+      );
+    }
+};
+
+class Q10 extends Component {
+    constructor(props) {
+      super(props);
+      this._handleValidSubmit = this._handleValidSubmit.bind(this);
+      this.ToggleClass = this.ToggleClass.bind(this);
+    }
+    _handleValidSubmit(value) {
+        this.props.nextQuestion(value);
+    }
+ 
+    _handleInvalidSubmit(errors, values) {
+        // Errors is an array containing input names 
+        // that failed to validate 
+    }
+    ToggleClass(e) {
+      if(e.target.nodeName === 'LABEL') {
+        e.target.classList.toggle('selected')
+      }
+    }
+    render() {
+      return (
+        <div>
+          <div className="custom-question-centered">
+            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Which best describes your goal in launching this website?</h3> 
+          </div>
+            <Form
+              onValidSubmit={this._handleValidSubmit.bind(this)}
+              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
+            >
+                <div className="custom-buttons-centered">
+                    <FormGroup>
+                    <ValidatedInput
+                        type='checkbox'
+                        name='Simply Online Presence'
+                        label='Establish an online presence'
+                        onClick={this.ToggleClass}
+                    />
+                      <ValidatedInput
+                        type='checkbox'
+                        name='Show Off'
+                        label='Showcase what I have to offer'
+                        onClick={this.ToggleClass}
+                    />
+                    <ValidatedInput
+                        type='checkbox'
+                        name='Inspire/Branding'
+                        label='Inspire my audience with ideas'
+                        onClick={this.ToggleClass}
+                    />
+                    <ValidatedInput
+                        type='checkbox'
+                        name='Drive sales'
+                        label='Drive traffic and sales'
+                        onClick={this.ToggleClass}
+                    />
+                  </FormGroup>
+                </div>
+              <div className="custom-next-centered">
+                <Button 
+                  type="submit"
+                  bsStyle="primary">
+                  NEXT
+                </Button>
+              </div>
+          </Form>
+        </div>
+      );
+    }
+};
+
+class Q11 extends Component {
       constructor(props) {
         super(props);
         this.state = {
@@ -652,7 +837,7 @@ class SiteForm extends Component {
   }
 }
 
-class Q10 extends Component {
+class Q12 extends Component {
   constructor(props) {
         super(props);
         this._handleValidSubmit = this._handleValidSubmit.bind(this);
@@ -719,7 +904,9 @@ class Q10 extends Component {
   }
 };
 
-class Q11 extends Component {
+
+
+class Q13 extends Component {
   constructor(props) {
         super(props);
         this._handleValidSubmit = this._handleValidSubmit.bind(this);
@@ -806,7 +993,7 @@ class Q11 extends Component {
 };
 
 
-class Q12 extends Component {
+class Q14 extends Component {
   constructor(props) {
     super(props);
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
@@ -887,7 +1074,7 @@ class Q12 extends Component {
     }
 };
 
-class Q13 extends Component {
+class Q15 extends Component {
       constructor(props) {
         super(props);
         this.state = {
@@ -909,7 +1096,7 @@ class Q13 extends Component {
       }
 
       skipQuestions() {
-        this.props.skipQuestions({has_domain: 'No', domain_name: '', domain_pass: '', domain_user_name: ''}, 1);
+        this.props.skipQuestions({has_domain: 'No', domain_name: '', domain_pass: '', domain_user_name: ''}, 2, {has_email_as_domain: 'No', domain_email_other: ''});
       }
       renderForm(has) {
         return has ? <DomainForm {...this.props} /> : '' ;
@@ -945,16 +1132,17 @@ class DomainForm extends Component {
   constructor(props) {
     super(props);
     this._handleValidSubmit = this._handleValidSubmit.bind(this);
-    this.ToggleClass = this.ToggleClass.bind(this);
-    this.state = {url: 'http://'};
+    this.conditionalFields = this.conditionalFields.bind(this);
+    this.state = {url: 'http://', client: ''};
   }
   _handleValidSubmit(value) {
     this.props.nextQuestion({...value, has_domain: 'Yes'});
   }
   _handleInvalidSubmit(errors, values) {
   }
-  ToggleClass(e) {
-    e.target.classList.toggle('selected')
+  conditionalFields(v) {
+    this.setState({client: v});
+    document.getElementById('domaine_details').style.display = "block"; 
   }
   render() {
     return(
@@ -976,78 +1164,174 @@ class DomainForm extends Component {
                         onChange={e => this.setState({url: e.target.value})}
                     />
                     </div>
-              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Under which domain client?</h3>
-            </div>
-            <div className="custom-buttons-centered custom-form-centered">
-            <FormGroup>
-                <ValidatedInput
-                    type='checkbox'
-                    name='Go Daddy'
-                    label='Go Daddy'
-                    onClick={this.ToggleClass}
-                />
-                  <ValidatedInput
-                    type='checkbox'
-                    name='Register.com'
-                    label='Google'
-                    onClick={this.ToggleClass}
-                />
-                <ValidatedInput
-                    type='checkbox'
-                    name='Other'
-                    label='Other'
-                    onClick={this.ToggleClass}
-                />
-                </FormGroup>
+              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Under which domain client?</h3>
+              <RadioGroup 
+                        name='domaine_client'
+                        label='Under which domain client?'
+                        validate='required'
+                        errorHelp='Please choose option.'>
+                    <Radio 
+                          value='Go Daddy'
+                          label='Go Daddy'
+                          onClick={ v => this.conditionalFields('Go Daddy')} />
+                    <Radio 
+                          value='Google'
+                          label='Google'
+                          onClick={v => this.conditionalFields('Google')} />
+                    <Radio 
+                          value='Other'
+                          label='Other'
+                          onClick={v => this.conditionalFields('')} />
+              </RadioGroup>
               </div>
-              <div className="custom-question-centered custom-question-centered-last-section custom-9">
-                <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Please provide us your domain Log-in</h3>
+              <div id="domaine_details" className="custom-question-centered custom-question-centered-last-section custom-9">
+                <h5>Please Provide the same information as you have in your {this.state.client} account</h5>
                 <div className="relative">
-                <ValidatedInput
-                      type='text'
-                      name='domain_user_name'
-                      validate='required'
-                      bsSize='small'
-                      label='User'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                      />
+                  <ValidatedInput
+                        type='text'
+                        name='domain_user_name'
+                        validate='required'
+                        bsSize='small'
+                        label='First Name'
+                          labelClassName='cd-label'
+                          groupClassName="hvr-underline-from-center"
+                          onFocus={(e) => {
+                                        e.target.previousSibling.classList.remove('unfocus');
+                                        e.target.previousSibling.classList.add('focus');
+                                      }
+                              }
+                              onBlur={(e) => {
+                                        if (e.target.value == '') {
+                                            e.target.previousSibling.classList.remove('focus');
+                                            e.target.previousSibling.classList.add('unfocus');
+                                          }
+                                      }
+                              }
+                        />
                 </div>
                 <div className="relative">
-                <ValidatedInput
-                      type='text'
-                      name='domain_pass'
-                      validate='required'
-                      bsSize='small'
-                      label='Password'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                      />
+                  <ValidatedInput
+                        type='text'
+                        name='domain_user_second_name'
+                        validate='required'
+                        bsSize='small'
+                        label='Last Name'
+                          labelClassName='cd-label'
+                          groupClassName="hvr-underline-from-center"
+                          onFocus={(e) => {
+                                        e.target.previousSibling.classList.remove('unfocus');
+                                        e.target.previousSibling.classList.add('focus');
+                                      }
+                              }
+                              onBlur={(e) => {
+                                        if (e.target.value == '') {
+                                            e.target.previousSibling.classList.remove('focus');
+                                            e.target.previousSibling.classList.add('unfocus');
+                                          }
+                                      }
+                              }
+                        />
                 </div>
+                { (this.state.client === 'Go Daddy') ? 
+
+                  <div className="relative">
+                    <ValidatedInput
+                          type='text'
+                          name='domain_company'
+                          validate='required'
+                          bsSize='small'
+                          label='Company'
+                            labelClassName='cd-label'
+                            groupClassName="hvr-underline-from-center"
+                            onFocus={(e) => {
+                                          e.target.previousSibling.classList.remove('unfocus');
+                                          e.target.previousSibling.classList.add('focus');
+                                        }
+                                }
+                                onBlur={(e) => {
+                                          if (e.target.value == '') {
+                                              e.target.previousSibling.classList.remove('focus');
+                                              e.target.previousSibling.classList.add('unfocus');
+                                            }
+                                        }
+                                }
+                          />
+                  </div>
+                  : <span></span>
+                }
+                <div className="relative">
+                  <ValidatedInput
+                        type='text'
+                        name='domain_email'
+                        validate='required'
+                        bsSize='small'
+                        label='Email'
+                          labelClassName='cd-label'
+                          groupClassName="hvr-underline-from-center"
+                          onFocus={(e) => {
+                                        e.target.previousSibling.classList.remove('unfocus');
+                                        e.target.previousSibling.classList.add('focus');
+                                      }
+                              }
+                              onBlur={(e) => {
+                                        if (e.target.value == '') {
+                                            e.target.previousSibling.classList.remove('focus');
+                                            e.target.previousSibling.classList.add('unfocus');
+                                          }
+                                      }
+                              }
+                        />
+                </div>
+                { (this.state.client !== 'Go Daddy') ? 
+                  <div>
+                    <div className="relative">
+                      <ValidatedInput
+                            type='text'
+                            name='domain_username'
+                            validate='required'
+                            bsSize='small'
+                            label='username'
+                              labelClassName='cd-label'
+                              groupClassName="hvr-underline-from-center"
+                              onFocus={(e) => {
+                                            e.target.previousSibling.classList.remove('unfocus');
+                                            e.target.previousSibling.classList.add('focus');
+                                          }
+                                  }
+                                  onBlur={(e) => {
+                                            if (e.target.value == '') {
+                                                e.target.previousSibling.classList.remove('focus');
+                                                e.target.previousSibling.classList.add('unfocus');
+                                              }
+                                          }
+                                  }
+                            />
+                    </div>
+                    <div className="relative">
+                      <ValidatedInput
+                            type='text'
+                            name='domain_password'
+                            validate='required'
+                            bsSize='small'
+                            label='password'
+                              labelClassName='cd-label'
+                              groupClassName="hvr-underline-from-center"
+                              onFocus={(e) => {
+                                            e.target.previousSibling.classList.remove('unfocus');
+                                            e.target.previousSibling.classList.add('focus');
+                                          }
+                                  }
+                                  onBlur={(e) => {
+                                            if (e.target.value == '') {
+                                                e.target.previousSibling.classList.remove('focus');
+                                                e.target.previousSibling.classList.add('unfocus');
+                                              }
+                                          }
+                                  }
+                            />
+                    </div>
+                  </div> : <span></span>
+                }
               </div>
             <div className="custom-next-centered">
               <Button 
@@ -1061,7 +1345,7 @@ class DomainForm extends Component {
   }
 }
 
-class Q14 extends Component {
+class Q16 extends Component {
       constructor(props) {
         super(props);
         this.state = {
@@ -1194,7 +1478,7 @@ class DomainEmail extends Component {
   }
 }
 
-class Q15 extends Component {
+class Q17 extends Component {
       constructor(props) {
         super(props);
         this.state = {
@@ -1383,229 +1667,6 @@ class HostingForm extends Component {
                             }
                       />
               </div>
-              <Button 
-                type="submit"
-                bsStyle="primary">
-                NEXT
-              </Button>
-            </div>
-          </Form>
-          );
-  }
-}
-class Q16 extends Component {
-  constructor(props) {
-    super(props);
-    this._handleValidSubmit = this._handleValidSubmit.bind(this);
-  }
-  _handleValidSubmit(value) {
-    this.props.nextQuestion(value);
-  }
-  _handleInvalidSubmit(errors, values) {
-  }
-  componentDidMount() {
-      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
-    }
-  render() {
-      return (
-        <div className="custom-question-centered custom-13 custom-16">
-            <h3 className="m-t-0 m-b-lg bl-blue-dark display-2">Enter email you want the contact form on site to go to</h3> 
-            <Form
-              onValidSubmit={this._handleValidSubmit.bind(this)}
-              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
-            >
-            <div className="relative">
-              <ValidatedInput
-                    type='text'
-                    name='public_email_1'
-                    validate='isEmail'
-                    bsSize='small'
-                    label='Please type in your public email'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                    />
-              </div>
-              <h6>List all the other emails you want to list on the site</h6>
-              <div className="relative">
-              <ValidatedInput
-                    type='text'
-                    name='public_email_2'
-                    bsSize='small'
-                    label='email@'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                    />
-              </div>
-              <div className="relative">
-              <ValidatedInput
-                    type='text'
-                    name='public_email_3'
-                    bsSize='small'
-                     label='email@'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                    />
-              </div>
-              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Enter the phone number you want to show on the site</h3>
-              <div className="relative">
-              <ValidatedInput
-                    type='text'
-                    name='public_tel_1'
-                    bsSize='small'
-                    validate={v => /^\d+$/.test(v)}
-                    label='tel.:'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                    />
-              </div>
-              <h6>List all the other phones you want to list on the site</h6>
-              <div className="relative">
-                <ValidatedInput
-                      type='text'
-                      name='public_tel_2'
-                      bsSize='small'
-                      label='tel.:'
-                          labelClassName='cd-label'
-                          groupClassName="hvr-underline-from-center"
-                          onFocus={(e) => {
-                                        e.target.previousSibling.classList.remove('unfocus');
-                                        e.target.previousSibling.classList.add('focus');
-                                      }
-                              }
-                              onBlur={(e) => {
-                                        if (e.target.value == '') {
-                                            e.target.previousSibling.classList.remove('focus');
-                                            e.target.previousSibling.classList.add('unfocus');
-                                          }
-                                      }
-                              }
-                      />
-              </div>
-              <div className="relative">
-              <ValidatedInput
-                    type='text'
-                    name='public_tel_3'
-                    bsSize='small'
-                    label='tel.:'
-                          labelClassName='cd-label'
-                          groupClassName="hvr-underline-from-center"
-                          onFocus={(e) => {
-                                        e.target.previousSibling.classList.remove('unfocus');
-                                        e.target.previousSibling.classList.add('focus');
-                                      }
-                              }
-                              onBlur={(e) => {
-                                        if (e.target.value == '') {
-                                            e.target.previousSibling.classList.remove('focus');
-                                            e.target.previousSibling.classList.add('unfocus');
-                                          }
-                                      }
-                              }
-                    />
-              </div>
-              <Button 
-                  type="submit"
-                  bsStyle="primary">
-                  NEXT
-              </Button>
-            </Form>
-        </div>
-      );
-    }
-};
-class Q17 extends Component {
-  constructor(props) {
-    super(props);
-    this._handleValidSubmit = this._handleValidSubmit.bind(this);
-  }
-  _handleValidSubmit(value) {
-    this.props.nextQuestion(value);
-  }
-  _handleInvalidSubmit(errors, values) {
-  }
-  componentDidMount() {
-      setTimeout(function(){ document.querySelector('input[type="text"]').focus(); }, 3000);
-    }
-  render() {
-    return(
-          <Form
-              onValidSubmit={this._handleValidSubmit.bind(this)}
-              onInvalidSubmit={this._handleInvalidSubmit.bind(this)}
-            >
-            <div className="custom-question-centered custom-question-centered-no-margin">
-              <h3 className="m-t-0 m-b-lg bl-blue-dark display-2 custom-h3-q13">Company location, Please write if you want to show on site a address</h3>
-            </div>
-            <div className="custom-next-centered">
-            <div className="relative">
-                <ValidatedInput
-                      type='text'
-                      name='company_location'
-                      bsSize='small'
-                      label='Optional if you want to show'
-                        labelClassName='cd-label'
-                        groupClassName="hvr-underline-from-center"
-                        onFocus={(e) => {
-                                      e.target.previousSibling.classList.remove('unfocus');
-                                      e.target.previousSibling.classList.add('focus');
-                                    }
-                            }
-                            onBlur={(e) => {
-                                      if (e.target.value == '') {
-                                          e.target.previousSibling.classList.remove('focus');
-                                          e.target.previousSibling.classList.add('unfocus');
-                                        }
-                                    }
-                            }
-                      />
-            </div>
               <Button 
                 type="submit"
                 bsStyle="primary">
@@ -1946,4 +2007,4 @@ Stay tuned for an email update from one of our creative professionals</h3>
 };
 
 
-export default [Q10, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21];
+export default [Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21];
